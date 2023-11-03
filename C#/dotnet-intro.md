@@ -74,12 +74,59 @@ Implementations of .NET include .NET Framework, .NET 5+ (and .NET Core), UWP and
     - uses .NET Native AOT compiler & runtime (VES)
     - CoreFx (Standard Libraries), same as .NET Core/5
 ## C# Program Structure
-Namespaces - logical grouping of related types to avoid namespace conflict, helps in project/app packaging and versioning 
+- [Namespaces](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/namespace) - logical grouping of related types to avoid namespace conflict, helps in project/app packaging and versioning 
     - Types - class, struct, interface, delegates, enums, records
         - Type members - variables, fields, methods, events, properties etc....
 
+- *File scoped namespace* declarations enable you to declare that all types in a file are in a single namespace. 
+    - File scoped namespace declarations are available with C# 10. 
+    - File scoped namespaces can't include additional namespace declarations. You cannot declare a nested namespace or a second file-scoped namespace:
+## using keyword with namespaces
+- the **using** directive imports all the types from a single namespace.
+- The scope of a using directive without the global modifier is the file in which it appears.
+- You can apply two modifiers to a using directive:
+    - The *global* modifier has the same effect as adding the same using directive to every source file in your project. This modifier was introduced in C# 10.
+    - The *static* modifier imports the static members and nested types from a single type rather than importing all the types in a namespace.
 ## Microsoft .NET language
-Microsoft offers 3 languages on the .NET platform – C#, F# and Visual Basic. But .Net has support of more .Net compliant languages.
+- Dozens of programming languages are supported by .Net provided they are compatible with the platform, [listed.](https://en.wikipedia.org/wiki/List_of_CLI_languages)
+- 3 different languages which are by default supported by .Net are
+- [C#](https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/): Features are: 
+    - Object oriented, type safe language and is case sensitive
+        - object oriented means, that everything is an object. These objects are further organized with classes
+        - Type-safe means that once you declare a type of a variable, you can't really change it. 
+    - Component-oriented 
+    - Lambda Expression, LINQ (Language Integrated Query), asynchronous operations ...
+- Visual Basic : Supports UI and component oriented language.
+- F#: F# is a functional programming language supported by .NET
+- All .Net compliant languages ahve to follow a Standard. These standard are defined by CLS (Common Language Specification).
+  - CLS gives a set of rules and regulation a .Net compliant language should follow. Ex all .Net compliant languages should be OOP languages, Array index should start from 0 etc...
+
+
+# [Basics of C#](https://docs.microsoft.com/en-gb/users/dotnet/collections/yz26f8y64n7k07?WT.mc_id=dotnet-35129-website) 
+- C# is Case-Sensitive, Object-Oriented, Component Oriented language
+    - Object-oriented means everythign is based on objects and classes and the relationships between them
+- C# has coding syntax resembling other programming languages like C, C++, Java. Not that they wanted to copy them but for ease of developers to adopt this programming language.
+- It is a type safe language. Type Safety is because of component of .Net known as **CTS** (Common Type System).
+    - Type-safe meaning once you set a datatype you can't change the datatype (unless you use certain techniques to do it)
+## Types (Classes, Enums, Structs, Interface, Delegates)
+-   All types in  C# are inherited directly or indirectly **System.Object**
+    - **[Value Types](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-types)** 
+        - which stores the direct value, 
+        - stored in memory Stack,
+        - Stack is always faster to retrieve data than heap
+        - Every value type has a set of memory set aside for it to occupy (Ex: int can only store 32-bits while a double can store 64-bits) and stack memory is all about structure for efficiency and how data cannot be dynamically changing in size
+        - Ex Predefined (int, long, short, byte, DateTime, char)
+        - Structs - like a class but gets stored in the stack for memory retrieval efficiency
+        - Enums - defines a set of named integral constants
+    - **[Reference Types](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/reference-types)** 
+        - They are datatypes that are stored in the heap and reference variables that are stored in the stack
+         - Think of reference variables as having the address of a house since an address only holds the info on where the house is and not the actual house itself
+        - When you declare a variable of a reference type and not have it point to anything in the beginning, it will have a null value
+            - Null in the coding world means lack of value or there isn't any value at all
+        - Reference variables are stored in the stack while the actual object itself is stored in the heap
+        - retrieval a value from heap is an expensive process.
+        - Why the heap? since memory in the heap can be dynamically changing
+        - Ex Predefined -> string, arrays, collections etc, Classes, interface, Delegates.  
 # References:
 - https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations
 - https://learn.microsoft.com/en-in/dotnet/standard/glossary
