@@ -128,7 +128,8 @@ Implementations of .NET include .NET Framework, .NET 5+ (and .NET Core), UWP and
         - retrieval a value from heap is an expensive process.
         - Why the heap? since memory in the heap can be dynamically changing
         - Ex Predefined -> string, arrays, collections etc, Classes, interface, Delegates.  
-
+#### [Activity](https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-1/)
+Write your first code using C#
 ## Conversion
 Because C# is statically-typed at compile time, after a variable is declared, it cannot be declared again or assigned a value of another type unless that type is implicitly convertible to the variable's type. For example, the `string` cannot be implicitly converted to `int`. 
 However, you might sometimes need to copy a value into a variable or method parameter of another type. For example, you might have an `integer` variable that you need to pass to a method whose parameter is typed as `double`. Or you might need to assign a class variable to a variable of an interface type. These kinds of operations are called type conversions.
@@ -194,6 +195,14 @@ Console.WriteLine("==== Boxing and Unboxing ====");
     - ![https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/boxing-operation-i-o-variables.gif](boxing)
     - Similar way when unboxing happens it can take upto 4 times as long as an assignment.
     - ![https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/unboxing-conversion-operation.gif](unboxing)
+#### [Activity](https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-4/)
+Choose the correct data type in your C# code
+### How to handle overflow checks
+* When integer arithmetic overflow occurs, the overflow-checking context defines what happens. 
+* The checked and unchecked statements specify the overflow-checking context for integral-type arithmetic operations and conversions.
+* In a checked context, a System.OverflowException is thrown
+* In an unchecked context, the operation result is truncated by discarding any high-order bits that don't fit in the destination type.
+
 ### Var keyword
 - Implicit typed variables declared using var
 # References:
