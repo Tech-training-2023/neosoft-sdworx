@@ -194,7 +194,7 @@ Console.WriteLine("==== Boxing and Unboxing ====");
     - It is best to avoid boxing using value types in situation where they are boxed a high number of times. This can take upto 20 times longer than a simple reference assignment.
     - ![boxing](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/boxing-operation-i-o-variables.gif)
     - Similar way when unboxing happens it can take upto 4 times as long as an assignment.
-    - ![https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/unboxing-conversion-operation.gif](unboxing)
+    - ![unboxin](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/unboxing-conversion-operation.gif)
 #### [Activity](https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-4/)
 Choose the correct data type in your C# code
 ### How to handle overflow checks
@@ -202,9 +202,48 @@ Choose the correct data type in your C# code
 * The checked and unchecked statements specify the overflow-checking context for integral-type arithmetic operations and conversions.
 * In a checked context, a System.OverflowException is thrown
 * In an unchecked context, the operation result is truncated by discarding any high-order bits that don't fit in the destination type.
+* To access the individual Unicode code points in a string, use the `StringInfo` object.
+* By default the value of integral type arithmatic operations and conversions are executed in unchecked context.
+## [Strings](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/strings/)
+A string is an object of type String whose value is text. 
+* Internally they are an array of Characters.
+* There's no null-terminating character at the end of a C# string; therefore a C# string can contain any number of embedded null characters ('\0').
+* The **Length** property of a string represents the number of Char objects it contains, not the number of Unicode characters.
+* String class offers many String operations that can be performed on a string - Contains, ToUpper, ToLower, Clone, CopyTo, Substring, IndexOf, Reverse, Replace, EndsWith, StartsWith, Trim.
+* String objects are **immutable**: they cannot be changed after they have been created. 
+  - All of the String methods and C# operators that appear to modify a string actually return the results in a new string object.
+  - Use [String Builder](https://docs.microsoft.com/en-us/dotnet/api/system.text.stringbuilder?view=net-5.0) class top perform operations on the string with better performance.
+* **Quoted string literals** start and end with a single double quote character '(")' on the same line. 
+    * Quoted string literals are best suited for strings that fit on a single line and don't include any escape sequences.
+* *Verbatim string literals* are more convenient for multi-line strings, strings that contain backslash characters, or embedded double quotes. 
+    * Verbatim strings preserve new line characters as part of the string text. 
+    * Use double quotation marks to embed a quotation mark inside a verbatim string. 
 
-### Var keyword
-- Implicit typed variables declared using var
+### Format strings
+A format string is a string whose contents are determined dynamically at run time. 
+* Format strings are created by embedding interpolated expressions or placeholders inside of braces within a string. 
+* Everything inside the braces '({...})' will be resolved to a value and output as a formatted string at run time. 
+* There are two methods to create format strings: [string interpolation](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated) and [composite formatting](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated).
+#### [Activity](https://learn.microsoft.com/en-us/dotnet/csharp/tutorials/exploration/interpolated-strings)
+String Interpolation
+
+### *var* keyword
+- Implicit typed variables declared using var. 
+- The compiler infer the type of a variable from its initialization expression. To do that, use the var keyword instead of a type's name.
+- When you work with [anonymous types](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/anonymous-types), you must use implicitly-typed local variables.
+
+### Constants
+- Constants are immutable values which are known at compile time and do not change for the life of the program. 
+- Constants are declared with the **const** modifier. 
+- Only the C# built-in types (excluding System.Object) may be declared as const. 
+- User-defined types, including classes, structs, and arrays, cannot be const. 
+- Use the **readonly** modifier to create a class, struct, or array that is initialized one time at run time (for example in a constructor) and thereafter cannot be changed.
+    - *readonly* indicates that assignment to the field can only occur as part of the declaration or in a constructor in the same class. 
+    - A readonly field can be assigned and reassigned multiple times within the field declaration and constructor.
+
+## Programming Constructs
+### [Selection Statements](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements)
+
 # References:
 - https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations
 - https://learn.microsoft.com/en-in/dotnet/standard/glossary
