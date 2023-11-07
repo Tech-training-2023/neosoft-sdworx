@@ -192,7 +192,7 @@ Console.WriteLine("==== Boxing and Unboxing ====");
     - When a value type is boxed it has allocate a new object and constructed. Memory location also changes from stack to heap.
     - For unboxing to a lesser degree, you have to move an object to stack memory
     - It is best to avoid boxing using value types in situation where they are boxed a high number of times. This can take upto 20 times longer than a simple reference assignment.
-    - ![https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/boxing-operation-i-o-variables.gif](boxing)
+    - ![boxing](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/boxing-operation-i-o-variables.gif)
     - Similar way when unboxing happens it can take upto 4 times as long as an assignment.
     - ![https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/unboxing-conversion-operation.gif](unboxing)
 #### [Activity](https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-4/)
