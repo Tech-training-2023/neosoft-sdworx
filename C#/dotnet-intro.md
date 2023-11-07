@@ -14,6 +14,7 @@ You can make many types of apps:
 * Fast and cross-platform - .NET performs faster than any other popular framework, according to TechEmpower. You can write, run, and build on multiple platforms, including Windows, Linux, and macOS.
 * Modern and productive - .NET helps you build apps for web, mobile, desktop, cloud, and more. With its large supportive ecosystem and powerful tooling, .NET is the most productive platform for developers.
 * NuGet Package Manager - NuGet is the package manager for .NET. It enables developers to share compiled binaries with each other. NuGet.org offers many popular packages from the community.
+* Allows backward compatibility most of the time.
 
 ## .NET history
 - In 2002, Microsoft released .NET Framework, a development platform for creating Windows apps. Today .NET Framework is at version 4.8 and remains fully supported by Microsoft.
@@ -127,6 +128,74 @@ Implementations of .NET include .NET Framework, .NET 5+ (and .NET Core), UWP and
         - retrieval a value from heap is an expensive process.
         - Why the heap? since memory in the heap can be dynamically changing
         - Ex Predefined -> string, arrays, collections etc, Classes, interface, Delegates.  
+
+## Conversion
+Because C# is statically-typed at compile time, after a variable is declared, it cannot be declared again or assigned a value of another type unless that type is implicitly convertible to the variable's type. For example, the `string` cannot be implicitly converted to `int`. 
+However, you might sometimes need to copy a value into a variable or method parameter of another type. For example, you might have an `integer` variable that you need to pass to a method whose parameter is typed as `double`. Or you might need to assign a class variable to a variable of an interface type. These kinds of operations are called type conversions.
+### Implict Conversions
+* No syntax is required to change type because  conversion succeed with no data loss. 
+* Examples include conversions from smaller to larger integral types, and conversions from derived classes to base classes.
+* `long` can contain int values because long is 8 byte integer and `int` is of 4 byte integer type.
+```
+long height;
+int h = 178;
+height = h;// implicit conversion
+```
+### Explicit Conversion
+* Explicit conversion require a cast expression. Casting is required when informations might be lost in the conversiom or when the conversion might not succeed. 
+* Typical examples include numeric conversion to a type that has less precision or a smaller range, and conversion of a base-class instance to a derived class.
+* Ex - numeric conversion to a type that has less precision or smaller range or conversion of base type to child type.
+```
+short height;
+int h = 178;
+height = (short)h;// explicit cast
+```
+### [User-defined conversion](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/user-defined-conversion-operators)
+* Gives you the capabilities to convert other datatypes into a class either implicitly or explicitly
+* You must use the **operator** keyword followed by either **implicit** or **explicit** keyword
+* User defined conversion are performed by special methods that define to enable explicit and implicit conversions between custom types that do noy have a class-derived class relationship.
+
+### Conversion with Helper classes:
+We can use `Parse` method of Type to convert built in types.
+### [Boxing and Unboxing](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/boxing-and-unboxing)
+* Boxing
+    * It is when a value type gets casted into an object
+    * Useful if you want a value type to have reference type like functionalities
+    * It is implicit conversion
+* Unboxing
+    * When you extract the value from an object and convert it into a value type instead
+    * It is explicit conversion
+```
+Console.WriteLine("==== Boxing and Unboxing ====");
+            
+            //Value type
+            //You get the value directly
+            int num = 123;
+
+            //Boxing example
+            //When a value type gets casted into an object
+            //What happens is that the value is wrapped to give it a reference type behavior
+            //No other syntax is needed
+            //It is implicit conversion
+            object obj = num;
+            Console.WriteLine(obj);
+
+            //Unboxing example
+            //When you extract the value type from the object and just get the value directly instead
+            //A syntax is needed (dataType)Object
+            //It is explicit converion
+            int num2 = (int)obj;
+            Console.WriteLine(num2);
+```
+- Boxing and unboxing are computationally expensive and in return they are poor in [performance](https://learn.microsoft.com/en-us/dotnet/framework/performance/performance-tips)
+    - When a value type is boxed it has allocate a new object and constructed. Memory location also changes from stack to heap.
+    - For unboxing to a lesser degree, you have to move an object to stack memory
+    - It is best to avoid boxing using value types in situation where they are boxed a high number of times. This can take upto 20 times longer than a simple reference assignment.
+    - ![https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/boxing-operation-i-o-variables.gif](boxing)
+    - Similar way when unboxing happens it can take upto 4 times as long as an assignment.
+    - ![https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/media/boxing-and-unboxing/unboxing-conversion-operation.gif](unboxing)
+### Var keyword
+- Implicit typed variables declared using var
 # References:
 - https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations
 - https://learn.microsoft.com/en-in/dotnet/standard/glossary
