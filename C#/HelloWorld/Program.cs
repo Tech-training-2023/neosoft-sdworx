@@ -14,7 +14,7 @@ class Program
         //WriteLine(output);     
         
         AnotherClass ac = new AnotherClass();
-        ac.About2DArrays();
+        ac.JaggedArrays();
         
     }
 }

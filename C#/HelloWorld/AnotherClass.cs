@@ -174,7 +174,7 @@ namespace HelloWorld
 
             Console.WriteLine($"Elements in the matrix - {matrix.Length}");
             Console.WriteLine($"Dimension of the matrix - {matrix.Rank}");
-            
+
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
@@ -183,6 +183,39 @@ namespace HelloWorld
                 }
                 Console.WriteLine();
             }
+        }
+
+        public void JaggedArrays()
+        {
+            //int[,,] Array3D = new int[3, 3, 4];
+            int rows = 3;
+            string[][] jaggedFamilies = new string[rows][];
+
+            jaggedFamilies[0] = new string[2] { "Pushpinder-ArrowFunctions", "Kartar-ArrowFunctions" };
+            jaggedFamilies[1] = new string[4] { "Astri-SDWorx", "Pravind-SDWorkx", "Mehtaab-SDWorx", "Ronnita-SDWorx" };
+            jaggedFamilies[2] = new string[3] { "Joe-NeoSoft", "Gauresh-Neosoft", "Sneha-NeoSoft" };
+
+            Console.WriteLine($"Length of Jagged Array - {jaggedFamilies.Length}");
+            Console.WriteLine($"Rank of Jagged Array - {jaggedFamilies.Rank}");
+
+            foreach (var row in jaggedFamilies)
+            {
+                foreach (var item in row)
+                {
+                    Console.Write($"{item} | ");
+                }
+                Console.WriteLine();
+            }
+        }
+        
+        /// <summary>
+        /// Method that reverses a string without in build methods of C#
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string ReverseString(string str)// abscde => edcba
+        {
+            return "";
         }
     }
 }
