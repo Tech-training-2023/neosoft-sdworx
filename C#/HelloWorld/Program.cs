@@ -11,7 +11,10 @@ class Program
     {
         Greeting obj = new Greeting();
         string output = obj.PrintHello("Rishi", "Sunak"); // calling/invoking method
-        WriteLine(output);        
+        WriteLine(output);     
+        
+        AnotherClass ac = new AnotherClass();
+        ac.aboutFor(5);
         
     }
 }

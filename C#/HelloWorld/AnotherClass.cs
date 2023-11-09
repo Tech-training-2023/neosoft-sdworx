@@ -5,11 +5,11 @@ namespace HelloWorld
 {
     internal class AnotherClass
     {
-        void Print()
+        public void Print()
         {
             WriteLine("Hello, please print this line");
         }
-        static void checkedUnchecked()
+        public static void checkedUnchecked()
         {
             long a;//declaration
             a = 35; // assigning value
@@ -25,7 +25,7 @@ namespace HelloWorld
                 WriteLine(y);// this will lead to overflow exception
             }
         }
-        static void aboutStrings()
+        public static void aboutStrings()
         {         // STRINGS
             string a; // declarations
             a = " A fox jumped in to the lake  \row  ";  // intializations
@@ -58,7 +58,7 @@ namespace HelloWorld
 
         }
 
-        static void aboutConversionAndImplicitTypes()
+        public static void aboutConversionAndImplicitTypes()
         {
             string a = "10";
             int m = Int32.Parse(a);
@@ -67,7 +67,7 @@ namespace HelloWorld
             var name = 25.00;//implicitly typed local variable
             WriteLine(name.GetType());
         }
-        static void aboutSelectStatements()
+        public static void aboutSelectStatements()
         {
             float pi = 3.14f;
             if (pi > 3)
@@ -117,6 +117,31 @@ namespace HelloWorld
                 default:
                     day = "Invalid";
                     break;
+            }
+        }
+         
+        public void aboutDoWhile(int n)
+        {
+            do
+            {
+                Console.WriteLine(n);
+                n++;//increment postfix operator => n=n+1
+            } while (n < 0);
+        }
+        public void aboutWhile(int n)
+        {
+            while(n<10)
+            {
+                Console.WriteLine(n);
+                n++;//increment postfix operator => n=n+1
+            }
+        }
+
+        public void aboutFor(int n)
+        {
+            for (int i = n; i < 10; i++)
+            {
+                Console.WriteLine(i);
             }
         }
     }
