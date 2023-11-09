@@ -7,21 +7,14 @@ namespace HelloWorld; // file scope namespace
                       // Types - class is a type just like structs, enums
 class Program
 {
-    readonly float pi;
-    public Program()
+
+    static void Main()// starting point of execution, called by CLR
     {
-        pi = 3.14f;
-    }
-    // Type member
-    static void Main()// starting point of execution
-    {
-        //program statment
-        /*
-         C# is case sensitive
-         statements ends with semi-colon
-         C# is type safe as well
-         */
-        WriteLine("Welcome to SDWorx training!");
+        Greeting obj = new Greeting();
+        string output = obj.PrintHello("Rishi", "Sunak"); // calling/invoking method
+        WriteLine(output);
+      
+
         //DateTime dt;
         //long a;//declaration
         //a = 35; // assigning value
