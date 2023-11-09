@@ -266,6 +266,17 @@ The iteration statements repeatedly execute a statement or a block of statements
         * Method parameters are enclosed in parentheses and are separated by commas. Empty parentheses indicate that the method requires no parameters.
     * **Method body** - It is the the block which starts with `{` and ends with `}`
     * **Method parameters and arguments** - The method definition specifies the names and types of any parameters that are required. When calling code calls the method, it provides concrete values called arguments for each parameter. The arguments must be compatible with the parameter type.
+### [Arrays](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
+- Used to store a datatype and have fixed sizes
+- Zero-based index
+    - 0 is the starting position of the array
+- `Length` of an array consists of number of elements in an array
+- *Elements* are the items inside the array.
+- `Rank`is a property that returns the dimension of the arrat
+- Types arrays you can make:
+    - **Single Dimensional** arrays: `int[] marks = new int[5];`
+    - **Multidimensional** arrays - `int[,] ex = new int[4,2];` would create [ [0, 0], [0, 0], [0, 0], [0, 0] ]. Multi rows and columns
+    - **Jagged** arrays - `int[][] jagged = new int[3][];` arrays inside of an array are different sizes [ [0, 0, 0], [0, 0], [0, 0, 0], [0, 0 , 0, 0] ]
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)

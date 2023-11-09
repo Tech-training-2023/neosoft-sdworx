@@ -9,7 +9,7 @@ namespace HelloWorld
         {
             WriteLine("Hello, please print this line");
         }
-        public static void checkedUnchecked()
+        public static void CheckedUnchecked()
         {
             long a;//declaration
             a = 35; // assigning value
@@ -25,7 +25,7 @@ namespace HelloWorld
                 WriteLine(y);// this will lead to overflow exception
             }
         }
-        public static void aboutStrings()
+        public static void AboutStrings()
         {         // STRINGS
             string a; // declarations
             a = " A fox jumped in to the lake  \row  ";  // intializations
@@ -58,7 +58,7 @@ namespace HelloWorld
 
         }
 
-        public static void aboutConversionAndImplicitTypes()
+        public static void AboutConversionAndImplicitTypes()
         {
             string a = "10";
             int m = Int32.Parse(a);
@@ -67,7 +67,7 @@ namespace HelloWorld
             var name = 25.00;//implicitly typed local variable
             WriteLine(name.GetType());
         }
-        public static void aboutSelectStatements()
+        public static void AboutSelectStatements()
         {
             float pi = 3.14f;
             if (pi > 3)
@@ -119,8 +119,8 @@ namespace HelloWorld
                     break;
             }
         }
-         
-        public void aboutDoWhile(int n)
+
+        public void AboutDoWhile(int n)
         {
             do
             {
@@ -128,20 +128,60 @@ namespace HelloWorld
                 n++;//increment postfix operator => n=n+1
             } while (n < 0);
         }
-        public void aboutWhile(int n)
+        public void AboutWhile(int n)
         {
-            while(n<10)
+            while (n < 10)
             {
                 Console.WriteLine(n);
                 n++;//increment postfix operator => n=n+1
             }
         }
 
-        public void aboutFor(int n)
+        public void AboutFor(int n)
         {
             for (int i = n; i < 10; i++)
             {
                 Console.WriteLine(i);
+            }
+        }
+
+        public void About1DArrays()
+        {
+            int[] scores = { 60, 98, 78, 100, 99 };//declare, initialize and assign values to array in 1 step
+            Console.WriteLine($"Number of elements - {scores.Length}");
+            /*for (int i = 0; i < scores.Length; i++)
+            {
+                Console.Write($"{scores[i]} ");
+            }*/
+
+            foreach (int i in scores)
+            {
+                Console.Write($"{i} ");
+            }
+        }
+
+        public void About2DArrays()
+        {
+            int rows = 3;
+            int columns = 2;
+            int[,] matrix = new int[rows, columns];//declare and initialize 2D array
+            matrix[0, 0] = 5;
+            matrix[0, 1] = 7;
+            matrix[1, 0] = 4;
+            matrix[1, 1] = 9;
+            matrix[2, 0] = 11;
+            matrix[2, 1] = 10;
+
+            Console.WriteLine($"Elements in the matrix - {matrix.Length}");
+            Console.WriteLine($"Dimension of the matrix - {matrix.Rank}");
+            
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    Console.Write($"{matrix[i, j]} ");
+                }
+                Console.WriteLine();
             }
         }
     }
