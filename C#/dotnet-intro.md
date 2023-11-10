@@ -266,6 +266,28 @@ The iteration statements repeatedly execute a statement or a block of statements
         * Method parameters are enclosed in parentheses and are separated by commas. Empty parentheses indicate that the method requires no parameters.
     * **Method body** - It is the the block which starts with `{` and ends with `}`
     * **Method parameters and arguments** - The method definition specifies the names and types of any parameters that are required. When calling code calls the method, it provides concrete values called arguments for each parameter. The arguments must be compatible with the parameter type.
+### [Named and Optional Arguments](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/named-and-optional-arguments)
+* **Named arguments** enable you to specify an argument for a parameter by matching the argument with its name rather than with its position in the parameter list.
+* **Optional arguments** enable you to omit arguments for some parameters. 
+* When you use named and optional arguments, the arguments are evaluated in the order in which they appear in the argument list, not the parameter list.
+
+### [Method Overloading](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/member-overloading)
+* Member overloading means creating two or more members on the same type that differ only in the number or type of parameters but have the same name. 
+* Overloading is one of the most important techniques for improving usability, productivity, and readability of reusable libraries. 
+* Overloading on the number of parameters makes it possible to provide simpler versions of constructors and methods. 
+* Overloading on the parameter type makes it possible to use the same member name for members performing identical operations on a selected set of different types.
+* Overloads of members can differ based on signatures:
+    * different number of parameters.
+    * different datatype of parameters.
+    * different sequence of parameters.
+
+### [Extension Methods](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods)
+* Extension methods enable you to "add" methods to existing types without creating a new derived type, recompiling, or otherwise modifying the original type. 
+* Extension methods are static methods, but they're called as if they were instance methods on the extended type. 
+* For client code written in C#, F# and Visual Basic, there's no apparent difference between calling an extension method and the methods defined in a type.
+* The parameter is preceded by the this modifier. 
+* Extension methods are only in scope when you explicitly import the namespace into your source code with a using directive.
+
 ### [Arrays](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
 - Used to store a datatype and have fixed sizes
 - Zero-based index
@@ -277,6 +299,21 @@ The iteration statements repeatedly execute a statement or a block of statements
     - **Single Dimensional** arrays: `int[] marks = new int[5];`
     - **Multidimensional** arrays - `int[,] ex = new int[4,2];` would create [ [0, 0], [0, 0], [0, 0], [0, 0] ]. Multi rows and columns
     - **Jagged** arrays - `int[][] jagged = new int[3][];` arrays inside of an array are different sizes [ [0, 0, 0], [0, 0], [0, 0, 0], [0, 0 , 0, 0] ]
+
+## What is Object-Oriented programming?
+- It is a methodology we use to design our programs just using classes and objects
+- It makes it a lot easier to develop and maintain your project as it gets bigger
+
+### Classes
+- They are templates that are used to create objects and define the object's functions and current state (essentially what information they currently store)
+
+### Objects
+- It is any entity that has a state and behavior
+- They are made from classes and will copy whatever state and behavior the class has defined
+
+### Overall
+- Classes are blueprints and Objects is the actual object from the blueprint
+- Ex: A blueprint of a car, tells you how to make a car but it isn't the car itself (The Class) The multiple cars you make from same blueprint (The Objects of that Class)
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)

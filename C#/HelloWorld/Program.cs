@@ -10,11 +10,12 @@ class Program
     static void Main()// starting point of execution, called by CLR
     {
         Greeting obj = new Greeting();
-        string output = obj.PrintHello("Rishi", "Sunak"); // calling/invoking method
-        //WriteLine(output);     
+        string output = obj.PrintHello("Kartar", "Deoora", 34, 400); // calling/invoking method
+        WriteLine(output);
+        WriteLine(output.WordCount());
         
         AnotherClass ac = new AnotherClass();
-        ac.JaggedArrays();
+        //ac.JaggedArrays();
         
     }
 }
