@@ -39,5 +39,27 @@ namespace HelloWorld
         {
             return $"Hello, {firstName} {lastName} earns ${wageRate} per hour";
         }
+
+
+        public (int min, int max) FindMinMaxValue(int[] input)
+        {
+            if (input == null || input.Length==0)
+            {
+                return (-1,-1);
+            }
+
+            int min = int.MaxValue;
+
+            int max = int.MinValue;
+
+            foreach (var i in input)
+            {
+                if (i < min)
+                    min = i;
+                if (i > max)
+                    max = i;
+            }
+            return (min, max);
+        }
     }
 }

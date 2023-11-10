@@ -310,10 +310,52 @@ The iteration statements repeatedly execute a statement or a block of statements
 ### Objects
 - It is any entity that has a state and behavior
 - They are made from classes and will copy whatever state and behavior the class has defined
-
-### Overall
 - Classes are blueprints and Objects is the actual object from the blueprint
 - Ex: A blueprint of a car, tells you how to make a car but it isn't the car itself (The Class) The multiple cars you make from same blueprint (The Objects of that Class)
+
+### Pillars of OOP
+- Encapsulation: Wrapping up of data and data hiding for data security. Access modifiers for data hiding and wrapping happens through, methods, classes, namespaces,properties to encapsulate data.
+- Abstraction: Showing only essential features instead of unecessary details. Designing the project using interface and abstract classes is one of the examples of abstraction in C#.
+- Inheritance : Parent child relationship to achieve specification from generalisation. Allows resuability by letting parent class features to be used by child class or even re-defining parent class features is Inheritance.
+- Types of Inheritance
+    - Single-level
+    - multi-level/hierarichal
+    - multiple inheritance is not permitted in C# with classes.
+- Polymorphism - Poly means many, morphs means forms. Examples are method overloading and overiding.
+
+### [Tuple types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-tuples)
+* The tuples feature provides concise syntax to group multiple data elements in a lightweight data structure. 
+* To define a tuple type, you specify types of all its data members and, optionally, the field names. 
+* You can't define methods in a tuple type, but you can use the methods provided by .NET.
+* Tuple types support equality operators == and !=. 
+    ```
+    (int a, byte b) left = (5, 10);
+    (long a, int b) right = (5, 10);
+    Console.WriteLine(left == right);  // output: True
+    Console.WriteLine(left != right);  // output: False
+
+    var t1 = (A: 5, B: 10);
+    var t2 = (B: 5, A: 10);
+    Console.WriteLine(t1 == t2);  // output: True
+    Console.WriteLine(t1 != t2);  // output: False
+    ```
+* Tuple types are value types; tuple elements are public fields that makes tuples mutable value types.
+* One of the most common use cases of tuples is as a method with more than 1 return type. Then, you can work with the returned tuple instance directly or deconstruct it in separate variables.
+* You can also use tuple types instead of [anonymous types](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/anonymous-types). 
+* You explicitly specify tuple fields names in a tuple initialization expression or in the definition of a tuple type, as the following example shows:
+    ```
+    var t = (Sum: 4.5, Count: 3);
+    Console.WriteLine($"Sum of {t.Count} elements is {t.Sum}.");
+
+    (double Sum, int Count) d = (4.5, 3);
+    Console.WriteLine($"Sum of {d.Count} elements is {d.Sum}.");
+    ```
+* Tuple assignment and tuple equality comparisons don't take field names into account.
+* *var* keyword can be used with tuples.
+* **Tuple assignment and deconstruction**
+    * C# supports assignment between tuple types that satisfy both of the following conditions:
+        * both tuple types have the same number of elements
+        * for each tuple position, the type of the right-hand tuple element is the same as or implicitly convertible to the type of the corresponding left-hand tuple element
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)
