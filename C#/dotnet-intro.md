@@ -356,6 +356,10 @@ The iteration statements repeatedly execute a statement or a block of statements
     * C# supports assignment between tuple types that satisfy both of the following conditions:
         * both tuple types have the same number of elements
         * for each tuple position, the type of the right-hand tuple element is the same as or implicitly convertible to the type of the corresponding left-hand tuple element
+
+## Structures (struct) Types
+It is a value type to encapsulate data and related functionality.
+* *structs* are used to design small data centric types that provide little or no behavior.
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)
