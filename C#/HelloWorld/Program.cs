@@ -49,14 +49,17 @@ class Program
 
 
         // Structs
-        Employee employee = new Employee();
-        employee.Id = 100;
-        employee.firstName = "James";
-        employee.lastName = "Bond";
-        employee.city = "London";
-        employee.age = 45;
-        employee.salary = 10000.00M;
+        Employee employee = new Employee(100, "James", "Bond",45,"London", 10000.0M );
+        employee.id = 100;
+        //employee.firstName = "James";
+        //employee.lastName = "Bond";
+        //employee.city = "London";
+        //employee.age = 45;
+        //employee.salary = 10000.00M;
         WriteLine(employee.GetDetails());
+
+        Employee employee2 = default(Employee); 
+        WriteLine(employee2.GetDetails());
     }
 }
 // this will not be allowed if you use file scoped namespace before

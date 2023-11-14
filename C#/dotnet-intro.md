@@ -357,9 +357,29 @@ The iteration statements repeatedly execute a statement or a block of statements
         * both tuple types have the same number of elements
         * for each tuple position, the type of the right-hand tuple element is the same as or implicitly convertible to the type of the corresponding left-hand tuple element
 
-## Structures (struct) Types
+## [Structures (struct) Types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)
 It is a value type to encapsulate data and related functionality.
 * *structs* are used to design small data centric types that provide little or no behavior.
+* **Constructors** are used to initialize values to the stryct type.
+    * A *constructor* is a special method of public which is used to initialize values to a type (class/struct). It can be *default, parameterless, parameterized*.
+* Limitations with the design of a structure type
+    * Structs have most of the capabilities of a class type. There are some exceptions, and some exceptions that have been removed in more recent versions:
+        * A structure type can't inherit from other class or structure type and it can't be the base of a class. However, a structure type can implement interfaces.
+        * You can't declare a finalizer within a structure type.
+        * Prior to C# 11, a constructor of a structure type must initialize all instance fields of the type.
+        * Prior to C# 10, you can't declare a parameterless constructor.
+        * Prior to C# 10, you can't initialize an instance field or property at its declaration.
+
+## Access Modifiers in C#
+They provide accessibility control to the types ans type members. Through access modifiers one can achieve *data hiding* (encapsulation) in the program.
+Types of access modifiers:
+1. public 
+2. private
+3. protected
+4. internal
+5. protected internal
+5. private protected
+![Access Modifiers](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers#summary-table)
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)
