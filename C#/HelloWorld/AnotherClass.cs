@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace HelloWorld
 {
@@ -216,6 +218,94 @@ namespace HelloWorld
         public string ReverseString(string str)// abscde => edcba
         {
             return "";
+        }
+    
+        public void CollectionsList()
+        {
+            List<float> scores = new List<float>() {77.8f, 98.80f, 66.78f, 86.75f };
+            scores.Add(78.90f);
+            scores.Remove(77.8f);
+            Console.WriteLine(scores.Count);
+            scores.Sort();
+            scores.Reverse();
+            foreach (float item in scores)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        public void CollectionsStack()
+        {
+            Stack<float> scores = new Stack<float>();
+            scores.Push(88.90f);
+            scores.Push(98.8f);
+            scores.Push(66.78f);
+            scores.Push(78.9f);
+            scores.Push(86.75f);
+            scores.Pop();
+            Console.WriteLine($"Count - {scores.Count}");
+            Console.WriteLine($"Top Value - {scores.Peek()}");
+            foreach (float item in scores)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        public void CollectionsQueue()
+        {
+            Queue<float> scores = new Queue<float>();
+            scores.Enqueue(88.90f);
+            scores.Enqueue(98.8f);
+            scores.Enqueue(66.78f);
+            scores.Enqueue(78.9f);
+            scores.Enqueue(86.75f);
+            scores.Dequeue();
+            Console.WriteLine($"Count - {scores.Count}");
+            Console.WriteLine($"Top Value - {scores.Peek()}");
+            foreach (float item in scores)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        public void CollectionsDictionary()
+        {
+            Dictionary<string, string> atomicElements = new Dictionary<string, string>();
+            atomicElements.Add("K", "Potassium");
+            atomicElements.Add("Ca", "Calcium");
+            atomicElements.Add("Au", "Gold");
+            atomicElements.Add("Fe", "Iron");
+            atomicElements.Add("Ag", "Silver");
+            
+            foreach (var symbols in atomicElements)
+            {
+                Console.WriteLine($"{symbols.Value} - {symbols.Key}");
+            }
+        }
+        //Non-generic - ArrayList
+        public void CollectionsArrayList()
+        {
+            ArrayList list = new ArrayList();
+            list.Add("david Feinman");
+            list.Add("Scientist");
+            list.Add(72);
+            list.Add(789034.0098f);
+            
+            foreach(var item in list)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        public void CollectionsHashTable()
+        {
+            Hashtable list = new Hashtable();
+            list.Add(1,"david Feinman");
+            list.Add(2,"Scientist");
+            list.Add(3, 72);
+            list.Add(4, 789034.0098f);
+            
+            foreach (DictionaryEntry item in list)
+            {
+                Console.WriteLine($"{item.Key} - {item.Value}");
+            }
         }
     }
 }

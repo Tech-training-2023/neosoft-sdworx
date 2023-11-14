@@ -15,7 +15,7 @@ class Program
         WriteLine(output);
         WriteLine(output.WordCount());*/
 
-        //AnotherClass ac = new AnotherClass();
+        AnotherClass ac = new AnotherClass();
         //ac.JaggedArrays();
 
         //tuples
@@ -49,7 +49,7 @@ class Program
 
         // Structs
         //Employee employee = new Employee(100, "James", "Bond",45,"London", 10000.0M );
-        Employee employee = new Employee();
+        //Employee employee = new Employee();
         //employee.id = 102;
         //employee.firstName = "Carolyn";
         //employee.lastName = "Rehm";
@@ -57,10 +57,13 @@ class Program
         //employee.age = 28;
         //employee._Salary = 4000.00M;
         //employee.department = Department.IT;
-        WriteLine(employee.GetDetails());
+        //WriteLine(employee.GetDetails());
 
         //Employee employee2 = default(Employee); 
         //WriteLine(employee2.GetDetails());
+
+        //Collections
+        ac.CollectionsHashTable();
     }
 }
 // this will not be allowed if you use file scoped namespace before

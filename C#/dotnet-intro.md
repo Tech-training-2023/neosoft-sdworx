@@ -394,7 +394,74 @@ It is a value type defined by a set of named constants with underlying numeral t
 ### [Class Library](https://learn.microsoft.com/en-us/dotnet/core/tutorials/library-with-visual-studio?pivots=dotnet-7-0)
 A class library defines types and methods that are called by an application. 
 * If the library targets .NET Standard 2.0, it can be called by any .NET implementation (including .NET Framework) that supports .NET Standard 2.0. 
-* 
+
+## [Collections](https://docs.microsoft.com/en-us/dotnet/standard/collections/)
+- Similar data can often be handled more efficiently when stored and manipulated as a collection. 
+- You can use arrays, non-generic or generics.
+- Arrays have fixed size and every element must have a value if no value is provided it contains the default.
+- Arrays cannot be grown or shrinked. This where collection solves the problem.
+- C# offers 2 categories of Collections:
+    - non-generics
+    - generics
+- **Non-generic** collections store items as Object, require casting. Performance concerns were arised due to this casting and also Garbage Collection.
+- **Generic collections** are type-safe at compile time. Because of this, generic collections typically offer better performance. 
+    - Generic collections accept a type parameter when they are constructed and do not require that you cast to and from.
+    - The "T" you see in documentation is where you put what data type that collection will hold
+- All collections provide methods for adding, removing, or finding items in the collection.
+- All collections can be **enumerated** by virtue of **Enumerator**.
+- An enumerator can be thought of as a movable pointer to any element in the collection.
+- Types of Generic Collections:
+    - Stack<T>
+        - LIFO - It is a Last-in, First-out list
+        - Major Operations 
+            - Push - Add element into stack
+            - Pop - Remove an element from TOP
+            - Peek - Retrieve the TOP element 
+    - Queue<T>
+        - FIFO - A first-in, first-out list
+        - Major Operations
+            - Enqueue - Add element into Queue
+            - Dequeue - Remove element from Queue
+            - Peek - Retrieve the TOP element 
+    - List<T> 
+        - Like any array which can grow and shrink dynamically.
+        - Items in the list can be accessed by index.
+        - It can accept null as a valid value for reference types and it also allows duplicate elements.
+        - List<T> class is not sorted by default and elements are accessed by zero-based index.
+        - Properties
+            - Capacity - Gets or sets the total number of elements the internal data structure can hold without resizing.
+            - Count - Gets the number of elements contained in the List<T>
+        - Methods:
+            - Add(T) - Adds an object to the end of the List<T>
+            - Clear() - Removes all elements from the List<T>
+            - Insert(index, T) - Inserts an element into the List<T> at the specified index
+            - Remove(T) -	Removes the first occurrence of a specific object from the List<T>
+            - RemoveAt(index) - Removes the element at the specified index of the List<T>
+            - Reverse() -	Reverses the order of the elements in the List<T> or a portion of it
+    - HashSet<T>
+        - It is an unordered collection of the unique elements. 
+        - It prevent duplicates from being inserted in the collection.
+    - Dictionary<Tkey,TValue> 
+        - It stores key/value pairs
+        - Keys must be Unique
+    - SortedList<TKey,TValue>
+        - It is a sorted list of key/value pairs 
+    - LinkedList<T> 
+        - It allows fast inserting and removing of elements. It implements a classic linked list.
+        - Each element is separately allocated.
+        - Properties:
+            - Count -	Gets the number of nodes actually contained in the LinkedList.
+            - First -	Gets the first node of the LinkedList.
+            - Last - Gets the last node of the LinkedList.
+        - Methods:
+            - AddFirst - Adds a new node or value at the start of the LinkedList.
+            - AddLast -	Adds a new node or value at the end of the LinkedList.
+            - Clear() -	Removes all nodes from the LinkedList.
+            - Contains(T) -	Determines whether a value is in the LinkedList.
+            - Remove(LinkedListNode) - Removes the specified node from the LinkedList.
+            - Remove(T) - Removes the first occurrence of the specified value from the LinkedList.
+            - RemoveFirst() - Removes the node at the start of the LinkedList.
+            - RemoveLast() - Removes the node at the end of the LinkedList.
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)
