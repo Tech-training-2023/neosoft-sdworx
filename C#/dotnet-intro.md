@@ -379,7 +379,16 @@ Types of access modifiers:
 4. internal
 5. protected internal
 5. private protected
-![Access Modifiers](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers#summary-table)
+
+## [Properties](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties)
+A property is a member that provides a flexible mechanism to read, write, or compute the value of a private field. Properties can be used as if they're public data members, but they're special methods called accessors. This feature enables data to be accessed easily and still helps promote the safety and flexibility of methods.
+* Properties enable a class to expose a public way of getting and setting values, while hiding implementation or verification code.
+* A *get* property accessor is used to return the property value, and a *set* property accessor is used to assign a new value. 
+* The value keyword is used to define the value being assigned by the set or init accessor.
+Properties can be read-write (they have both a get and a set accessor), read-only (they have a get accessor but no set accessor), or write-only (they have a set accessor, but no get accessor). 
+* Write-only properties are rare and are most commonly used to restrict access to sensitive data.
+
+
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)

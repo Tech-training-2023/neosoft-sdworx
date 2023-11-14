@@ -13,8 +13,19 @@ namespace HelloWorld
         public string lastName;
         public int age;
         public string city;
-        public decimal salary;
+        public string department { get; set; }//auto implemented property
+        private decimal salary;
 
+        public decimal _Salary
+        {
+            get { return salary * 12; }// return a values
+            set
+            {
+                if (value < 0)
+                    value = 0;
+                salary = value;
+            } //write to a value
+        }
         public Employee()//parameterless constructor
         {
             //default values
@@ -36,7 +47,7 @@ namespace HelloWorld
         }
         public string GetDetails()
         {
-            return $"{id} - {firstName} {lastName}, is age - {age} years old, comes from {city} and earns {salary}/month";
+            return $"{id} - {firstName} {lastName}, is age - {age} years old, comes from {city} and earns ${_Salary}";
         }
     }
 }
