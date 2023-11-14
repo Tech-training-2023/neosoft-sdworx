@@ -1,7 +1,6 @@
 ﻿//predefined namespace : pre-written by C# experts 
 global using static System.Console;
-using System;
-using System.Text;
+using EmployeeLib;
 //user defined namespace
 namespace HelloWorld; // file scope namespace
                       // Types - class is a type just like structs, enums, delegats, interface, Tuple, records
@@ -51,12 +50,13 @@ class Program
         // Structs
         //Employee employee = new Employee(100, "James", "Bond",45,"London", 10000.0M );
         Employee employee = new Employee();
-        employee.id = 102;
-        employee.firstName = "Carolyn";
-        employee.lastName = "Rehm";
-        employee.city = "Dallas";
-        employee.age = 28;
-        employee._Salary = 4000.00M;
+        //employee.id = 102;
+        //employee.firstName = "Carolyn";
+        //employee.lastName = "Rehm";
+        //employee.city = "Dallas";
+        //employee.age = 28;
+        //employee._Salary = 4000.00M;
+        //employee.department = Department.IT;
         WriteLine(employee.GetDetails());
 
         //Employee employee2 = default(Employee); 

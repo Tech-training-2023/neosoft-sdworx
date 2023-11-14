@@ -388,7 +388,13 @@ A property is a member that provides a flexible mechanism to read, write, or com
 Properties can be read-write (they have both a get and a set accessor), read-only (they have a get accessor but no set accessor), or write-only (they have a set accessor, but no get accessor). 
 * Write-only properties are rare and are most commonly used to restrict access to sensitive data.
 
+### [enum/Enumerations](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum)
+It is a value type defined by a set of named constants with underlying numeral type.
 
+### [Class Library](https://learn.microsoft.com/en-us/dotnet/core/tutorials/library-with-visual-studio?pivots=dotnet-7-0)
+A class library defines types and methods that are called by an application. 
+* If the library targets .NET Standard 2.0, it can be called by any .NET implementation (including .NET Framework) that supports .NET Standard 2.0. 
+* 
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)

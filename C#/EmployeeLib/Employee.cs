@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HelloWorld
+﻿namespace EmployeeLib
 {
-    struct Employee
+    public struct Employee
     {
         internal int id;
         public string firstName;
         public string lastName;
         public int age;
         public string city;
-        public string department { get; set; }//auto implemented property
+        //public string department { get; set; }//auto implemented property
+        public Department department;
         private decimal salary;
 
         public decimal _Salary
@@ -35,6 +30,7 @@ namespace HelloWorld
             age = 34;
             city = "Slough";
             salary = 7700.00M;
+            department = Department.Sales;
         }
         public Employee(int id, string firstName, string lastName, int age, string city, decimal salary)//parameterized constructor
         {
@@ -44,10 +40,11 @@ namespace HelloWorld
             this.age = age;
             this.city = city;
             this.salary = salary;
+            department = Department.Marketing;
         }
         public string GetDetails()
         {
-            return $"{id} - {firstName} {lastName}, is age - {age} years old, comes from {city} and earns ${_Salary}";
+            return $"{id} - {firstName} {lastName}, is age - {age} years old from {(int)department} department, comes from {city} and earns ${_Salary}";
         }
     }
 }
