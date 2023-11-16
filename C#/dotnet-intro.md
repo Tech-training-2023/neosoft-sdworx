@@ -462,6 +462,21 @@ A class library defines types and methods that are called by an application.
             - Remove(T) - Removes the first occurrence of the specified value from the LinkedList.
             - RemoveFirst() - Removes the node at the start of the LinkedList.
             - RemoveLast() - Removes the node at the end of the LinkedList.
+### [LINQ - Language Integrated Query](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)
+- Language-Integrated Query (LINQ) is the name for a set of technologies based on the integration of *query capabilities* directly into the C# language.
+- Previously, you have to learn a different query language for each type of data source: SQL databases, XML documents, various Web services, and so on and these queries against data are expressed as simple strings without type checking at compile time or IntelliSense support. LINQ solved all this problem by providing simple query based expression.
+- A *query* is an expression that retrieves data from a data source.
+- You can use LINQ in 2 ways:
+    - *Query Syntax* - its similar to sql query fashion that can be used for filtering, ordering, grouping operations on data sources woth minimal code.
+    - All LINQ query operations consist of three distinct actions:
+        - Obtain the data source.
+        - Create the query.
+        - Execute the query.
+    - The complete operation includes creating a data source, defining the query expression, and executing the query in a foreach statement.
+    - Query expressions are easy to grasp because they use many familiar C# language constructs.
+    - The variables in a query expression are all strongly typed, although in many cases you do not have to provide the type explicitly because the compiler can infer it.
+    - A query is not executed until you iterate over the query variable like iterarting over foreach statement.
+- [LINQ Activity](https://www.w3resource.com/csharp-exercises/linq/index.php)
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)

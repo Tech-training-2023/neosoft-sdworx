@@ -1,5 +1,6 @@
 ﻿//predefined namespace : pre-written by C# experts 
 global using static System.Console;
+using System.Linq;
 using EmployeeLib;
 //user defined namespace
 namespace HelloWorld; // file scope namespace
@@ -63,7 +64,19 @@ class Program
         //WriteLine(employee2.GetDetails());
 
         //Collections
-        ac.CollectionsHashTable();
+        //ac.CollectionsList();
+
+        Employee emp = new Employee();
+        //var allEmployees = emp.GetEmployees();
+        // Get employees who have more than 5 years of experience
+        var filteredEmployees= (from employees in emp.GetEmployees()
+                                where employees.Experience<5 && employees.WageRate<50.0M && employees.WageRate>10.00M
+                                select employees).ToList();// forcing immediate execution of query and cache its results
+        WriteLine($"Count = {filteredEmployees.Count()}");//Force Immediate execution when it provides single value
+        foreach (var e in filteredEmployees)
+        {
+            WriteLine($"{e.Id} {e.FirstName} {e.LastName} - {e.Department} {e.City} - ${e.WageRate}/hour, {e.Experience} years");
+        }
     }
 }
 // this will not be allowed if you use file scoped namespace before

@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HelloWorld
 {
@@ -215,20 +216,24 @@ namespace HelloWorld
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public string ReverseString(string str)// abscde => edcba
+        public string ReverseString(string str)// abcde => edcba
         {
             return "";
         }
     
         public void CollectionsList()
         {
-            List<float> scores = new List<float>() {77.8f, 98.80f, 66.78f, 86.75f };
-            scores.Add(78.90f);
-            scores.Remove(77.8f);
+            //Data Source
+            List<float> scores = new List<float>() {77.8f, 98.80f, 66.78f, 86.75f, 45.78f, 34.65f, 66.55f };
+            //scores.Add(78.90f);
+            //scores.Remove(77.8f);
             Console.WriteLine(scores.Count);
-            scores.Sort();
-            scores.Reverse();
-            foreach (float item in scores)
+            //scores.Sort();
+            //scores.Reverse();
+            var query = from s in scores //points to the data source
+                        where s > 50.00f //condition
+                        select s; //result set
+            foreach (float item in query)
             {
                 Console.WriteLine(item);
             }
