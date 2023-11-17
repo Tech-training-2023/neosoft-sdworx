@@ -467,7 +467,7 @@ A class library defines types and methods that are called by an application.
 - Previously, you have to learn a different query language for each type of data source: SQL databases, XML documents, various Web services, and so on and these queries against data are expressed as simple strings without type checking at compile time or IntelliSense support. LINQ solved all this problem by providing simple query based expression.
 - A *query* is an expression that retrieves data from a data source.
 - You can use LINQ in 2 ways:
-    - *Query Syntax* - its similar to sql query fashion that can be used for filtering, ordering, grouping operations on data sources woth minimal code.
+    1. *Query Syntax* - its similar to sql query fashion that can be used for filtering, ordering, grouping operations on data sources woth minimal code.
     - All LINQ query operations consist of three distinct actions:
         - Obtain the data source.
         - Create the query.
@@ -476,6 +476,60 @@ A class library defines types and methods that are called by an application.
     - Query expressions are easy to grasp because they use many familiar C# language constructs.
     - The variables in a query expression are all strongly typed, although in many cases you do not have to provide the type explicitly because the compiler can infer it.
     - A query is not executed until you iterate over the query variable like iterarting over foreach statement.
+    - A *query expression* is a query expressed in query syntax.
+        - A query expression consists of a set of clauses written in a declarative syntax similar to SQL. 
+        - Each clause in turn contains one or more C# expressions, and these expressions may themselves be either a query expression or contain a query expression.
+        - A query expression must begin with a `from` clause and must end with a `select` or `group` clause.
+        - Between the first from clause and the last select or group clause, it can contain one or more of these optional clauses: where, orderby, join, let and even additional from clauses. 
+    - Given the data source a query can return:
+        - Retrieve a subset of the elements to produce a new sequence without modifying the individual elements. 
+            ```
+            IEnumerable<int> highScoresQuery =
+            from score in scores
+            where score > 80
+            orderby score descending
+            select score;
+            ```
+        - Retrieve a sequence of elements as in the previous example but transform them to a new type of object.
+            ```
+            IEnumerable<string> highScoresQuery2 =
+            from score in scores
+            where score > 80
+            orderby score descending
+            select $"The score is {score}";
+            ```
+        - Retrieve a singleton value about the source data, such as:        
+            - The number of elements that match a certain condition.            
+            - The element that has the greatest or least value.            
+            - The first element that matches a condition, or the sum of particular values in a specified set of elements.
+             ```
+            int highScoreCount = (
+            from score in scores
+            where score > 80
+            select score
+            ).Count();
+            ```
+           
+    2. *Method Syntax* - Some queries must be expressed as method calls. 
+        - For example, you must use a method call to express a query that retrieves the number of elements that match a specified condition.
+        ```
+                IEnumerable<int> numQuery1 =
+                from num in numbers
+                where num % 2 == 0
+                orderby num
+                select num;
+
+                //Method syntax:
+                IEnumerable<int> numQuery2 = numbers.Where(num => num % 2 == 0).OrderBy(n => n);
+        ```
+        - There are many other methods such as Select, SelectMany, Join, and Orderby in method based syntax. All these methods are extension methods to System.Linq library.
+        - the conditional expression `(num % 2 == 0)` is passed as an in-line argument to the Where method: `Where(num => num % 2 == 0)`. This inline expression is called a **lambda expression**.
+            -  *Lambda Expression* is a convenient way to write code that would otherwise have to be written in more cumbersome form as an anonymous method or a generic delegate or an expression tree. 
+            - In C# `=>` is the lambda operator, which is read as `"goes to"`. 
+            - The `num` on the left of the operator is the input variable which corresponds to `num` in the query expression. 
+            - The body of the lambda is just the same as the expression in query syntax or in any other C# expression or statement; it can include method calls and other complex logic. 
+            - The "return value" is just the expression result.
+       
 
 - **Coding challenge ion collection and LINQ**
     - Create a class library named **StudentLib** which has an object of type Student. Student object has:
