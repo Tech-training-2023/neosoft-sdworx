@@ -68,17 +68,23 @@ class Program
         //Write("Please Enter the first name ");
         //string firstName = ReadLine();//take input from user in string format only
         Employee emp = new Employee();
+        Manager mgr = new Manager();
         //var allEmployees = emp.GetEmployees();
         // Get employees who have more than 5 years of experience
-        var filteredEmployees = emp.GetEmployees().Where(e => e.Experience < 5 && e.WageRate < 50.0M).OrderBy(e=>e.Experience);
-                                /*(from employees in emp.GetEmployees()
-                                where employees.Experience<5 && employees.WageRate<50.0M && employees.WageRate>10.00M
-                                select employees).ToList();// forcing immediate execution of query and cache its results*/
-        WriteLine($"Count = {filteredEmployees.Count()}");//Force Immediate execution when it provides single value
-        foreach (var e in filteredEmployees)
+        //var filteredEmployees = emp.GetEmployees().Where(e => e.Experience < 5 && e.WageRate < 50.0M).OrderBy(e=>e.Experience);
+        /*(from employees in emp.GetEmployees()
+        where employees.Experience<5 && employees.WageRate<50.0M && employees.WageRate>10.00M
+        select employees).ToList();// forcing immediate execution of query and cache its results*/
+        //WriteLine($"Count = {filteredEmployees.Count()}");//Force Immediate execution when it provides single value
+
+        foreach (var a in emp.GetEmployees())
         {
-            WriteLine($"{e.Id} {e.FirstName} {e.LastName} - {e.Department} {e.City} - ${e.WageRate}/hour, {e.Experience} years");
+            WriteLine(a.ToString());
         }
+        /*foreach (var e in mgr.GetManagers())
+        {
+            WriteLine(e.ToString());
+        }*/
     }
 }
 // this will not be allowed if you use file scoped namespace before

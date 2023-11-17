@@ -10,7 +10,6 @@ namespace EmployeeLib
         public decimal WageRate { get; set; }
         public string City { get; set; }
         public Department Department { get; set; }
-
         public DateOnly DOB { get; set; }
         public List<Employee> GetEmployees()
         {
@@ -23,6 +22,15 @@ namespace EmployeeLib
             new Employee(){Id=6,FirstName="Tommy", LastName="Beth", Experience=9, WageRate=69.0M, Department=Department.Sales, City="Wales"}
             };
             return employees;
+        }
+        //public abstract List<string> GetDuties();
+        public virtual decimal MonthlySalary(decimal WageRate)
+        {
+            return 160 * WageRate;
+        }
+        public override string ToString()
+        {
+            return $"{Id} {FirstName} {LastName} - {Department} {City} - ${MonthlySalary(WageRate)}/month, {Experience} years.";
         }
     }
 }
