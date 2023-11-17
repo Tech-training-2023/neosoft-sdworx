@@ -13,8 +13,26 @@ namespace EmployeeLib
         Meals=200,
         Journals=50
     }
+    public sealed class Founder { 
+    
+    }
+
+    public abstract class EmployeeBase
+    {
+        public abstract List<Employee> GetEmployees();
+
+        public abstract decimal MonthlySalary();
+    }
     public class Manager:Employee
     {
+        public Manager()
+        {
+
+        }
+        public Manager(string m):base(m)//to call parameterized constructor of the base class
+        {
+
+        }
         public Perks _Perks { get; set; }
         public List<int> Reportees { get; set; }
 

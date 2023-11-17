@@ -1,8 +1,16 @@
 ﻿using System;
 namespace EmployeeLib
 {
-    public class Employee
+    public class Employee//:Founder // cannot derive from a sealed class
     {
+        public Employee()
+        {
+            Console.WriteLine("Employee class parameterless Constructor");
+        }
+        public Employee(string sd)
+        {
+            Console.WriteLine("Employee class parameterized Constructor");
+        }
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

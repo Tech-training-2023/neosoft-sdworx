@@ -67,8 +67,8 @@ class Program
         //ac.CollectionsList();
         //Write("Please Enter the first name ");
         //string firstName = ReadLine();//take input from user in string format only
-        Employee emp = new Employee();
-        Manager mgr = new Manager();
+        
+        //Employee emp = new Employee();
         //var allEmployees = emp.GetEmployees();
         // Get employees who have more than 5 years of experience
         //var filteredEmployees = emp.GetEmployees().Where(e => e.Experience < 5 && e.WageRate < 50.0M).OrderBy(e=>e.Experience);
@@ -76,15 +76,16 @@ class Program
         where employees.Experience<5 && employees.WageRate<50.0M && employees.WageRate>10.00M
         select employees).ToList();// forcing immediate execution of query and cache its results*/
         //WriteLine($"Count = {filteredEmployees.Count()}");//Force Immediate execution when it provides single value
-
-        foreach (var a in emp.GetEmployees())
+        /*var employees = emp.GetEmployees();
+        foreach (var a in employees)
         {
             WriteLine(a.ToString());
-        }
-        /*foreach (var e in mgr.GetManagers())
+        }*/
+        Manager mgr = new Manager("Hello");
+        foreach (var e in mgr.GetManagers())
         {
             WriteLine(e.ToString());
-        }*/
+        }
     }
 }
 // this will not be allowed if you use file scoped namespace before
