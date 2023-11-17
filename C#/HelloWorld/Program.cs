@@ -65,7 +65,8 @@ class Program
 
         //Collections
         //ac.CollectionsList();
-
+        Write("Please Enter the first name ");
+        string firstName = ReadLine();
         Employee emp = new Employee();
         //var allEmployees = emp.GetEmployees();
         // Get employees who have more than 5 years of experience
