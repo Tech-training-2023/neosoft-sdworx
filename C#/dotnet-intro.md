@@ -482,12 +482,12 @@ A class library defines types and methods that are called by an application.
         - ID, firstName, lastName, date of birth (try using DateTime), stream (political science, arts, commerce, science), city, gender
         - Add any random 5 students in a collection of your choice.
         - Create a method to iterate over all students and call it in the Main project named **StudentUI**.
-        - Take input from user to Add a new student with Id = 6, firstName = "Jammy". lastName="Bracket", Date of birth = 7/11/1998, stream = science, gender = male.
+        - Take input from user to Add a new student with Id = 6, firstName = "Jammy". lastName="Bracket", Date of birth = 7/11/1998, stream = science, gender = male, city = "London".
         - Take input from user as an id = 3 and remove student with id =3 
         - write a Query for students who are from science stream
         - write a query for filtering all females from science stream
         - write a query where student is between age range 16 to 22.
-        
+
 - [LINQ Activity](https://www.w3resource.com/csharp-exercises/linq/index.php)
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
