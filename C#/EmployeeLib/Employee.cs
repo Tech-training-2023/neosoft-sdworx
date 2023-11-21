@@ -1,7 +1,7 @@
 ﻿using System;
 namespace EmployeeLib
 {
-    public class Employee//:Founder // cannot derive from a sealed class
+    public class Employee :IEmployeeDetails,IEmployeeAccount //:EmployeeBase//:Founder // cannot derive from a sealed class
     {
         public Employee()
         {
@@ -32,13 +32,13 @@ namespace EmployeeLib
             return employees;
         }
         //public abstract List<string> GetDuties();
-        public virtual decimal MonthlySalary(decimal WageRate)
+        public virtual decimal MonthlySalary()
         {
             return 160 * WageRate;
         }
         public override string ToString()
         {
-            return $"{Id} {FirstName} {LastName} - {Department} {City} - ${MonthlySalary(WageRate)}/month, {Experience} years.";
+            return $"{Id} {FirstName} {LastName} - {Department} {City} - ${MonthlySalary()}/month, {Experience} years.";
         }
     }
 }

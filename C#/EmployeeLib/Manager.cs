@@ -17,11 +17,25 @@ namespace EmployeeLib
     
     }
 
-    public abstract class EmployeeBase
+    //Abstraction through interfaces
+    public interface IEmployeeDetails
     {
+        List<Employee> GetEmployees();        
+    }
+    public interface IEmployeeAccount
+    {
+        decimal MonthlySalary();
+    }
+    public abstract class EmployeeBase //partial abstraction
+    {
+        string ssn;
         public abstract List<Employee> GetEmployees();
 
         public abstract decimal MonthlySalary();
+        public string GetDetails()
+        {
+            return ssn;
+        }
     }
     public class Manager:Employee
     {
@@ -37,10 +51,10 @@ namespace EmployeeLib
         public List<int> Reportees { get; set; }
 
         //Method Overriding - redefining the method of base call in child class. Its also known as Dynamic polymorphism
-        public override decimal MonthlySalary(decimal WageRate)
+        public override decimal MonthlySalary()
         {
             decimal perks = (int)Perks.HRA+ (int)Perks.Journals+(int)Perks.Meals;
-            return base.MonthlySalary(WageRate)+perks;//base keyword is used to call any member of the base class
+            return base.MonthlySalary()+perks;//base keyword is used to call any member of the base class
         }
 
         public List<Manager> GetManagers()
@@ -56,7 +70,7 @@ namespace EmployeeLib
         }
         public override string ToString()
         {
-            return $"{Id} {FirstName} {LastName} - {Department} {City} - ${MonthlySalary(WageRate)}/month, {Experience} years, has {Reportees.Count} employees reporting";
+            return $"{Id} {FirstName} {LastName} - {Department} {City} - ${MonthlySalary()}/month, {Experience} years, has {Reportees.Count} employees reporting";
         }
     }
     

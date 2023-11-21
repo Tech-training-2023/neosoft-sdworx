@@ -67,7 +67,7 @@ class Program
         //ac.CollectionsList();
         //Write("Please Enter the first name ");
         //string firstName = ReadLine();//take input from user in string format only
-        
+
         //Employee emp = new Employee();
         //var allEmployees = emp.GetEmployees();
         // Get employees who have more than 5 years of experience
@@ -81,11 +81,13 @@ class Program
         {
             WriteLine(a.ToString());
         }*/
-        Manager mgr = new Manager("Hello");
+        IEmployeeDetails empAcc = new Employee();
+        empAcc.GetEmployees();
+        /*Manager mgr = new Manager("Hello");
         foreach (var e in mgr.GetManagers())
         {
             WriteLine(e.ToString());
-        }
+        }*/
     }
 }
 // this will not be allowed if you use file scoped namespace before

@@ -541,6 +541,11 @@ A class library defines types and methods that are called by an application.
         - write a Query for students who are from science stream
         - write a query for filtering all females from science stream
         - write a query where student is between age range 16 to 22.
+- # [Interfaces](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces)
+* Best way to achieve abstraction in C# in the purest form.
+* By definition an interface is a contract which is shared among the classes (structs well) and these implementing classes must implement the members of an interface.
+* An interface contains definitions for a griup of related functionalities that a non-abstract class or struct must implement. 
+* A class allows to implement multiple interfaces at a time  by which one can include behavior from multiple sources in a class.
 
 - [LINQ Activity](https://www.w3resource.com/csharp-exercises/linq/index.php)
 # References:
