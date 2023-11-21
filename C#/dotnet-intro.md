@@ -556,6 +556,21 @@ A class library defines types and methods that are called by an application.
             * Zero – This instance occurs in the same position in the sort order as obj.
             * Greater than zero – This instance follows obj in the sort order.
     - **IComparer**: The role of IComparer is to provide more comparison mechanisms. For example, you might want to provide ordering of your class on several fields or properties, ascending and descending order on the same field, or both.Using IComparer is a two-step process. First, declare a class that implements IComparer, and then implement the `Compare` method.The second step is to declare a method that returns an instance of your `IComparer` object.
+- There are some more interfaces which are commonly used in C# programming:
+    - `IEnumerable/IEnumerable<T>` - enumerates through a collection using `foreach` loop.
+        - `foreach` loop works for any collection which implements `System.Collections.IEnumerable` or `System.Collections.Generic.IEnumerable<T>`
+        - What is an enumerator? It is simply a pointer that tells to `movenext` until the last item is encountered.
+    - `ICollection` - implemented by all collections to provide `CopyTo`, `Count` operations etc....
+    - `IList` - Used by array type of collections. Ex - Arrays, List, List<T>, Dictionar
+    - `IDictionary` - for key/valye based collections. Ex - Hashtable, SortedList, Dictionary
+    - `IDictionaryEnumerator` - allows enumeration with foreach loop for a collection that supports `IDictionary`.
+
+- [Custom collections](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/csharp/language-compilers/implement-custom-collection)
+    - create a custom collection as assigend to you
+    - Implement methods to add and remove from the collection
+    - Show demo with addition, removal of elements and iteration (extra mile filteration using LINQ)
+    - Try not to use inbuilt C# method to ease your job.
+
 
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
