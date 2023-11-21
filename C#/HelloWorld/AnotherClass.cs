@@ -156,7 +156,8 @@ namespace HelloWorld
             {
                 Console.Write($"{scores[i]} ");
             }*/
-
+            Array.Sort(scores);
+            Array.Reverse(scores);
             foreach (int i in scores)
             {
                 Console.Write($"{i} ");

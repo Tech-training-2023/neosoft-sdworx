@@ -530,7 +530,7 @@ A class library defines types and methods that are called by an application.
             - The body of the lambda is just the same as the expression in query syntax or in any other C# expression or statement; it can include method calls and other complex logic. 
             - The "return value" is just the expression result.
        
-
+- [LINQ Activity](https://www.w3resource.com/csharp-exercises/linq/index.php)
 - **Coding challenge ion collection and LINQ**
     - Create a class library named **StudentLib** which has an object of type Student. Student object has:
         - ID, firstName, lastName, date of birth (try using DateTime), stream (political science, arts, commerce, science), city, gender
@@ -541,17 +541,27 @@ A class library defines types and methods that are called by an application.
         - write a Query for students who are from science stream
         - write a query for filtering all females from science stream
         - write a query where student is between age range 16 to 22.
-- # [Interfaces](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces)
+## [Interfaces](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces)
 * Best way to achieve abstraction in C# in the purest form.
 * By definition an interface is a contract which is shared among the classes (structs well) and these implementing classes must implement the members of an interface.
 * An interface contains definitions for a griup of related functionalities that a non-abstract class or struct must implement. 
 * A class allows to implement multiple interfaces at a time  by which one can include behavior from multiple sources in a class.
+* Interfaces can contain instance methods, properties, events, indexers, or any combination of those four member types.
 
-- [LINQ Activity](https://www.w3resource.com/csharp-exercises/linq/index.php)
+* [**IComparable and IComparer**](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/csharp/language-compilers/use-icomparable-icomparer)
+    * **IComparable**: The role of IComparable is to provide a method of comparing two objects of a particular type. It's necessary if you want to provide any ordering capability for your object. Think of IComparable as providing a default sort order for your objects. For example, if you have an array of objects of your type, and you call the Sort method on that array, IComparable provides the comparison of objects during the sort. When you implement the IComparable interface, you must implement the `CompareTo` method.
+        * `CompareTo` -Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object. Returns a value that indicates the relative order of the objects being compared. The
+        return value has these meanings:
+            * Less than zero – This instance precedes obj in the sort order.
+            * Zero – This instance occurs in the same position in the sort order as obj.
+            * Greater than zero – This instance follows obj in the sort order.
+    - **IComparer**: The role of IComparer is to provide more comparison mechanisms. For example, you might want to provide ordering of your class on several fields or properties, ascending and descending order on the same field, or both.Using IComparer is a two-step process. First, declare a class that implements IComparer, and then implement the `Compare` method.The second step is to declare a method that returns an instance of your `IComparer` object.
+
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)
 - [.Net version releases](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
 - [ C# Operators and Expressions](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/)
 - [C# Statements](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/statement-keywords)
+- [Interfaces](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface)
 - [Methods]()
