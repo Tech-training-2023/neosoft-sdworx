@@ -622,6 +622,36 @@ Generics introduces the concept of type parameters to .NET, which make it possib
 - General rule is the most specific exception should be the very first catch block and the least specific exception is at the very last catch block
     - Why? Well if you made the least specific the first catch block then it will always run if any exception is thrown making your other catch blocks useless
 
+## [Debugging in .Net](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/)
+Software doesn't always behave as you would expect, but .NET Core has tools and APIs that will help you diagnose these issues quickly and effectively.
+* Debuggers allow you to interact with your program. Pausing, incrementally executing, examining, and resuming gives you insight into the behavior of your code. A debugger is a good choice for diagnosing functional problems that can be easily reproduced.
+* 2 configurations of .Net - `debug` and `release` are the built-in .Ner configurations. 
+    * Debug - you use debug configuration for debugging 
+    * Release - you use release configuration for release distribution
+
+* A *breakpoint* temporarily interrupts the program execution before the line with the breakpoint is run.
+    * *Step into* - press `F11` - to inspect  inside of the program block
+    * *Step over* - press `F10` - to inspect outside the program block
+    * *Step out* - press `shift + F11` to step out of the current breakpoint
+* One can use other [diagnostics](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/) tools 
+    * Unit testing 
+    * Instrumentation using 3 pillars of observability
+        * metrics - [Metrics](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics) are numerical measurements recorded over time to monitor application performance and health.
+            * Metrics are often used to generate alerts when potential problems are detected. 
+            * Metrics have very low performance overhead and many services configure them as always-on telemetry. 
+            * Exceptions are often recorded as metrics, and can be summarized to reduce the cardinality of the data.
+        * logs - [Logging](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/logging-tracing) is a technique where code is instrumented to produce a log, a record of interesting events that occurred while the program was running. 
+            * Eg: log every event occuring in the program using apis like `NLog`, `SeriLlog` or `Ilogger` interface implementation.
+            * Performance overhead is variable depending on how much data is being logged.
+        * distributed traces - [Distributed Tracing](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing) is a specialized form of logging that helps you localize failures and performance issues within applications distributed across multiple machines or processes. 
+            * This technique tracks requests through an application correlating together work done by different application components and separating it from other work the application may be doing for concurrent requests. 
+            * It is possible to trace every request and sampling can be optionally employed to bound the performance overhead.
+    * There are multiple ways that the instrumentation data can be egressed from the application, including:
+        * OpenTelemetry - a cross-platform, vendor-neutral standard for collecting and exporting telemetry
+        * .NET CLI tools such as dotnet-counters
+        * dotnet-monitor - an agent for collecting traces and telemetry
+        * Third-party libraries or app code can read the information
+
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)
@@ -629,4 +659,4 @@ Generics introduces the concept of type parameters to .NET, which make it possib
 - [ C# Operators and Expressions](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/)
 - [C# Statements](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/statement-keywords)
 - [Interfaces](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface)
-- [Methods]()
+- [Debugging in .Net](https://learn.microsoft.com/en-us/dotnet/core/tutorials/debugging-with-visual-studio-code?pivots=dotnet-6-0)
