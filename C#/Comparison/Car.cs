@@ -2,12 +2,29 @@
 
 namespace Comparison
 {
+    class CarException:Exception
+    {
+        public CarException()
+        {
+
+        }
+        public CarException(string message):base(message)
+        {
+            message = "Invalid car added";
+        }
+        public CarException(string message, Exception inner):base(message, inner)
+        {
+
+        }
+    }
     public class Car:IComparable<Car>
     {
         public int Year { get; set; }
         public string Make { get; set; }
         public Car(string Make, int Year)
         {
+            if (Year < 1800 || Year > DateTime.Now.Year)
+                throw new CarException();
             this.Year = Year;
             this.Make= Make;
         }

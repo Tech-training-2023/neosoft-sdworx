@@ -605,17 +605,17 @@ Generics introduces the concept of type parameters to .NET, which make it possib
     - Usage error - error in your program logic and can be solve by modifying/restructuring your code
     - Program Error - run-time error that cannot be avoided even with a bug-free code (Ex: Your SDK is corrupt and can't compile or translate it to machine code properly)
     - System Failures - run-time error that cannot be handled programmatically in a meaninful way (Ex: your ram hardware is faulty)
-#### Exception Handling
-- Using a try-catch block and optionally finally block
+#### [Exception Handling](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/exceptions/)
+- Using a `try`-`catch` block and optionally `finally` block
 - If you know the block of code you will run will have a risk of throwing an exception, you should put it in the try block
 - The catch block will then "catch" that exception and will run instead its block of code
     - Once an exception occurs in the try block, the flow of control jumps to the first associated exception handler that is present anywhere in the call stack. In C#, the catch keyword is used to define an exception handler.
     - If no exception handler for a given exception is present, the program stops executing with an error message.
     - Don't catch an exception unless you can handle it and leave the application in a known state. 
-- Optionally, you can add a finally block that will run regardless if your code throws an exception or not
+- Optionally, you can add a `finally` block that will run regardless if your code throws an exception or not
     - Mostly used to clean up any resources you used in the try blcok
 #### Throwing Exception
-- You can throw an exception yourself in your code by using the throw keyword
+- You can throw an exception yourself in your code by using the `throw` keyword
 - Useful for enforcing certain rules/logic in your program
 #### Exception Heirarchy
 - Certain exceptions are more specific than other exceptions
