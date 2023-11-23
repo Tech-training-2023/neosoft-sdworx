@@ -1,6 +1,14 @@
-﻿using Comparison;
+﻿using System;
+using Comparison;
+using System.Collections;
 
 CarOperations opr = new CarOperations();
+
+Console.WriteLine("Please enter 2 values to be swapped ");
+string a = Console.ReadLine();
+string b = Console.ReadLine();
+Console.WriteLine($" Swapped values {CommonOperations<string>.Swap(a, b)}");
+
 
 var cars=opr.GetAllCars(); 
 

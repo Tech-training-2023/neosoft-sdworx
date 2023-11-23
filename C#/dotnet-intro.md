@@ -570,7 +570,57 @@ A class library defines types and methods that are called by an application.
     - Implement methods to add and remove from the collection
     - Show demo with addition, removal of elements and iteration (extra mile filteration using LINQ)
     - Try not to use inbuilt C# method to ease your job.
+## [Generics](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-type-parameters) - Parameterized types
+Generics introduces the concept of type parameters to .NET, which make it possible to design classes and methods that defer the specification of one or more types until the class or method is declared and instantiated by client code. 
+* For example, by using a generic type parameter T, you can write a single class that other client code can use without incurring the cost or risk of runtime casts or boxing operations.
+* Generic classes and methods combine:  
+    * Reusability
+    * Type safety
+    * Efficiency
+    * Performance
+* You can also create custom generic types and methods to provide your own generalized solutions and design patterns that are type-safe and efficient.
+* You can create your own generic interfaces, classes, methods, events, and delegates.
+    * [Generic Classes](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-classes) - Generic classes encapsulate operations that are not specific to a particular data type. The most common use for generic classes is with collections like linked lists, hash tables, stacks, queues, trees, and so on.
+    * [Generic Interfaces](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-interfaces) - To avoid boxing and unboxing operations on value types, it's better to use generic interfaces, such as IComparable<T>, on generic classes. The .NET class library defines several generic interfaces for use with the collection classes in the System.Collections.Generic namespace.
+    * [Generic methods](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-methods) - A generic method is a method that is declared with type parameters, this makes methods reusable and applies to the all datatypes unless constrained to a particular type.
+* Generic classes may be **constrained** to enable access to methods on particular data types.
+    * [Constraints](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/constraints-on-type-parameters) inform the compiler about the capabilities a type argument must have, they specify the capabilities and expectations of a type parameter.
+    * Without any constraints, the type argument could be any type. 
+    * Declaring those constraints means you can use the operations and method calls of the constraining type. 
+    * If client code uses a type that doesn't satisfy a constraint, the compiler issues an error. 
+    * Constraints are specified by using the `where` contextual keyword. 
+        * Ex - `where T : struct`
 
+
+## [Exceptions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/exceptions/)
+- An exception is an event that occurs during the execution of a program that distrupts the normal flow of instructions
+    - Horrible to encounter when presenting your program (When it is expected to work perfectly fine)
+    - Great when trying to find bugs in your program
+- They are not Errors!
+#### Errors
+- A serious problem that for the most part cannot be handled by the developer
+    -They are fatal to the program at runtime
+    - Ex: A stack overflow error and that usually occurs when your computer has run out of memory to store information
+- 3 types of errors
+    - Usage error - error in your program logic and can be solve by modifying/restructuring your code
+    - Program Error - run-time error that cannot be avoided even with a bug-free code (Ex: Your SDK is corrupt and can't compile or translate it to machine code properly)
+    - System Failures - run-time error that cannot be handled programmatically in a meaninful way (Ex: your ram hardware is faulty)
+#### Exception Handling
+- Using a try-catch block and optionally finally block
+- If you know the block of code you will run will have a risk of throwing an exception, you should put it in the try block
+- The catch block will then "catch" that exception and will run instead its block of code
+    - Once an exception occurs in the try block, the flow of control jumps to the first associated exception handler that is present anywhere in the call stack. In C#, the catch keyword is used to define an exception handler.
+    - If no exception handler for a given exception is present, the program stops executing with an error message.
+    - Don't catch an exception unless you can handle it and leave the application in a known state. 
+- Optionally, you can add a finally block that will run regardless if your code throws an exception or not
+    - Mostly used to clean up any resources you used in the try blcok
+#### Throwing Exception
+- You can throw an exception yourself in your code by using the throw keyword
+- Useful for enforcing certain rules/logic in your program
+#### Exception Heirarchy
+- Certain exceptions are more specific than other exceptions
+- General rule is the most specific exception should be the very first catch block and the least specific exception is at the very last catch block
+    - Why? Well if you made the least specific the first catch block then it will always run if any exception is thrown making your other catch blocks useless
 
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)

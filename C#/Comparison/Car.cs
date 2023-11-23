@@ -2,7 +2,7 @@
 
 namespace Comparison
 {
-    public class Car:IComparable
+    public class Car:IComparable<Car>
     {
         public int Year { get; set; }
         public string Make { get; set; }
@@ -12,7 +12,7 @@ namespace Comparison
             this.Make= Make;
         }
         //Method of IComparable interface, provide default sort order
-        public int CompareTo(object obj)
+        public int CompareTo(Car obj)
         {
             Car c = (Car)obj;
             return String.Compare(this.Make, c.Make);
