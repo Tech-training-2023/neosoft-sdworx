@@ -652,11 +652,63 @@ Software doesn't always behave as you would expect, but .NET Core has tools and 
         * dotnet-monitor - an agent for collecting traces and telemetry
         * Third-party libraries or app code can read the information
 
+## [static](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/static)
+`static` can be applied to types (class, structs, interfaces), members of types (methods, variables, properties etc...)
+* A static class can only have static members.
+* static class cannot be inherited, static methods cannot be overrided.
+* You cannot use `this` keyword with static methods.
+* static classes can have static constructors. 
+    * A static constructor is a called at some point between when the program starts and class is initiated.
+# Garbage Collector and Destructor in C#
+Creating objects in C# means that the CLR(Common Language Runtime) allocates memory from the heap to be used by the object. 
+* This is repeated for each consecutive object creation.The limit is theoretically the available memory in the system. 
+* This means there is a limit, and we need to consider other applications that may need to use these resources. 
+* The memory needs to be released every once in a while, when the application does not need it anymore.
+* *The garbage collector is the internal mechanism of CLR that's sole purpose is to free up those resources which are not needed anymore, but were once reserved by the applications themselves.*
+* The Garbage Collector aka **GC** runs automatically but we can call it explicitly by `GC.Collect()` method or by destructors aka `finalizers`
+* The **destructor** is a concept similar to constructors. 
+    * While the goal of the constructor is to reserve resources for the object of a specific class.The destructors’ goal is to free those resources. 
+    * The destructors are strongly coupled with the garbage collector.
+    * When you use destructor keep in mind the following:
+       * The structs cannot have finalizers, only classes can.
+       * Only one finalizer is permitted.
+       * The finalizers cannot be inherited or overloaded.
+       * The finalizers cannot be called.
+       * The finalizers cannot take modifiers or parameters.
+       * destructor cannot be used with static classes.
+    ```
+    class Employee
+    { 
+    // members and methods.
+    // Destructor or Finalizer
+        ~Employee()
+        {
+            Console.WriteLine("No longer with us!");
+        }
+    } 
+    ```
+* There is a concept called *Generation* which reveals to us the inner workings of garbage collection. There are three generations which separate different kinds of objects into distinct categories
+    * Generation (Zero) - Holds short-lived objects, temporary objects; the garbage collector is the most frequent in this realm.
+    * Generation (One) - A buffer between Zero and Two. The objects which are not collected at Zero are moved to One, these are called survivors. 
+    * Generation (Two) - Holds the long-lived objects like static and global variables that need to persist for a certain amount of time. Then the objects which are not collected at One arrive at Two. This is the final realm an object can reach.
+* When it comes to GC it is important to know about **managed objects** and **unmanaged objects**
+    * **managed** object when this object is under the scope of CLR; it's pure .NET code which is managed by runtime. 
+        * Anything which comes from .NET like classes, basic data structures like strings, integers, etc... are referred to as managed code.
+    * **unmanaged** objects when the object is outside of the control of the .NET libraries and not managed by the CLR. 
+        * These are objects like COM objects, file and network streams, connections objects, etc...
+        * unmanaged objects when the object is outside of the control of the .NET libraries and not managed by the CLR. 
+        * These are objects like COM objects, file and network streams, connections objects, etc...
+        * Ways to clean up unmanaged code:
+            * Implementing the `IDisposable` interface and `Dispose` of method.
+            * `'using'` block or statement
+## [File Handling]
+
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)
 - [.Net version releases](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
-- [ C# Operators and Expressions](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/)
+- [C# Operators and Expressions](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/)
 - [C# Statements](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/statement-keywords)
 - [Interfaces](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface)
 - [Debugging in .Net](https://learn.microsoft.com/en-us/dotnet/core/tutorials/debugging-with-visual-studio-code?pivots=dotnet-6-0)
+- [Garbage collectors and destructors](https://www.pluralsight.com/guides/destructors-uncertainty-of-destructive)

@@ -8,7 +8,13 @@ namespace Comparison
 {
     public class CarOperations
     {
-        public Car[] GetAllCars()
+        //destructor
+        ~CarOperations()
+        {
+            Console.WriteLine("Car died");
+        }
+        public static int x = 10;
+        public static Car[] GetAllCars()
         {
             Car[] cars = new Car[]
             {

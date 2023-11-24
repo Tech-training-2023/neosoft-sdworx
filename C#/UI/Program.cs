@@ -2,7 +2,7 @@
 using Comparison;
 using System.Collections;
 
-static double Division(double a, double b)
+/*static double Division(double a, double b)
 {
     if(b==0)
         throw new DivideByZeroException();
@@ -37,17 +37,15 @@ catch (Exception ex)
 finally
 {
     result = default;
-}
+}*/
 
-/*CarOperations opr = new CarOperations();
-
-Console.WriteLine("Please enter 2 values to be swapped ");
+/*Console.WriteLine("Please enter 2 values to be swapped ");
 string a = Console.ReadLine();
 string b = Console.ReadLine();
-Console.WriteLine($" Swapped values {CommonOperations<string>.Swap(a, b)}");
+Console.WriteLine($" Swapped values {CommonOperations<string>.Swap(a, b)}");*/
 
 
-var cars=opr.GetAllCars(); 
+var cars=CarOperations.GetAllCars(); 
 
 Console.WriteLine("Cars unsorted\n");
 foreach (Car car in cars)
@@ -71,4 +69,3 @@ Array.Sort(cars, Car.SortMakeDescending());
 Console.WriteLine("\n\nCars sorted in descending order of make");
 foreach (Car car in cars)
     Console.WriteLine($"{car.Make}\t\t{car.Year}");
-*/
