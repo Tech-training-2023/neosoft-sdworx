@@ -701,8 +701,33 @@ Creating objects in C# means that the CLR(Common Language Runtime) allocates mem
         * Ways to clean up unmanaged code:
             * Implementing the `IDisposable` interface and `Dispose` of method.
             * `'using'` block or statement
+## Serialization and Deserialization
+- Serialization is the process of converting an object into a form that can be readily transported. For example, you can serialize an object and transport it over the Internet using HTTP between a client and a server. 
+- On the other end, deserialization reconstructs the object from the stream.
+- The most common formats of serializations are:
+    - [XML](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization): XML serialization serializes only the public fields and property values of an object into an XML stream. 
+        - You can use [XML Serializer]() class to serialize your objects.
+        - The following items can be serialized using the XmlSerializer class:
+            - Public read/write properties and fields of public classes.
+            - Classes that implement ICollection or IEnumerable.
+### Messaging format 
+| C#                            |         xml                        |   Json                           |
+|-------------------------------|------------------------------------|----------------------------------|
+| class Employee                |`<Employee>`                        | Employee                         |
+|   {                           |   `<name>"Joe</name>`              |  {                               |
+|       string name="Joe";      |   `<id>1</id>`                     |      "name":"Joe",               |
+|       int id = 1;             |   `<city>"London"</city>`          |      "id":1,                     |
+|       string city = "London"  |   `<gender>'M'</gender>`           |      "city":"London",            |
+|       char gender = 'M';      |   `<salary>120</salary>`           |      "gender":"M",               |
+|       decimal salary = 120.0M;|`</employee>`                       |      "salary":120                |
+|                               |                                    |  }                               |
+|   }                           |                                    |                                  |
 ## [File Handling]
-
+- **System.IO** namespace provides four classes that allow you to manipulate individual files, as well as interact with a machine directory structure.
+- The **Directory** and **File** directly extends System.Object and supports the creation, copying, moving and deletion of files using various static methods.
+    -  They only contain static methods and are never instantiated.
+- The **FileInfo** and **DirectoryInfo** types are derived from the abstract class **FileSystemInfo** type and they are typically, employed for obtaining the full details of a file or directory because their members tend to return strongly typed objects.
+    - They implement roughly the same public methods as a Directory and a File but they are stateful and the members of these classes are not static.
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)
