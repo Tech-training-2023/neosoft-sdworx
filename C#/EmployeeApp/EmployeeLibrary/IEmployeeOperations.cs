@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.Json;
 using System.Xml.Serialization;
 
 namespace EmployeeLibrary
@@ -19,7 +19,8 @@ namespace EmployeeLibrary
     public class EmployeeOperations : IEmployeeOperations
     {
         static List<Employee> employees = null;
-        static string path = @"..\Employee.xml";
+        public static string pathXml = @"..\..\..\..\Data\Employee.xml";
+        public static string pathJson = @"..\..\..\..\Data\Employee.json";
 
         public List<Employee> Init()
         {
@@ -30,13 +31,16 @@ namespace EmployeeLibrary
             };
             return employees;
         }
-
-        public void AddDummyEmployees(List<Employee> employees)
+        /// <summary>
+        /// This method add some serialized dummy employees in the Employee.xml file
+        /// </summary>
+        /// <param name="employees"></param>
+        public void AddDummyEmployeesXml(List<Employee> employees)
         {
             StreamWriter writer = null;
             try
             {
-                writer = new StreamWriter(path);
+                writer = new StreamWriter(pathXml);
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Employee>));
                 serializer.Serialize(writer, employees);
             }
@@ -58,19 +62,83 @@ namespace EmployeeLibrary
             }
             Console.WriteLine("-----------Employees has been added------------");
         }
+        /// <summary>
+        /// This method add some serialized sample employees to Employee.json file
+        /// </summary>
+        /// <param name="employees"></param>
+        public void AddDummyEmployeesJson(List<Employee> employees)
+        {
+            using FileStream stream = File.Create(pathJson);
+            try
+            {
+                JsonSerializer.Serialize(stream, employees);
+
+            }
+            catch (DriveNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.WriteLine("-------------Employees added to Json file---------------");
+        }
         public void AddEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            employees.Add(employee);
+            Console.WriteLine($"Employee {employee.FirstName} has been added");
         }
-
+        /// <summary>
+        /// This method reads all employees from Employee.json file by deserializing the data in the file
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public IEnumerable<Employee> GetAllEmployees(string path)
         {
-            throw new NotImplementedException();
+            List<Employee> employees= null;
+            try
+            {
+                 employees = JsonSerializer.Deserialize<List<Employee>>(File.ReadAllText(path));
+            }
+            catch (DriveNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return employees;
         }
 
         public Employee GetEmployeeById(int id)
         {
-            throw new NotImplementedException();
+            employees = (List<Employee>)GetAllEmployees(pathJson);
+            var filteredEmployee = employees.FirstOrDefault(e=>e.Id==id);
+            return filteredEmployee;
+        }
+        public List<Employee> GetEmployeeByLastName(string lastName)
+        {
+            employees = (List<Employee>)GetAllEmployees(pathJson);
+            var filteredEmployee = employees.Where<Employee>(e => e.LastName == lastName).ToList();
+            return filteredEmployee;
         }
     }
 }

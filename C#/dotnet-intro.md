@@ -706,10 +706,16 @@ Creating objects in C# means that the CLR(Common Language Runtime) allocates mem
 - On the other end, deserialization reconstructs the object from the stream.
 - The most common formats of serializations are:
     - [XML](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization): XML serialization serializes only the public fields and property values of an object into an XML stream. 
-        - You can use [XML Serializer]() class to serialize your objects.
+        - You can use `XMLSerializer` class to serialize your objects.
         - The following items can be serialized using the XmlSerializer class:
             - Public read/write properties and fields of public classes.
             - Classes that implement ICollection or IEnumerable.
+    - [JSON](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview):The System.Text.Json library design emphasizes high performance and low memory allocation over an extensive feature set. Built-in UTF-8 support optimizes the process of reading and writing JSON text encoded as UTF-8, which is the most prevalent encoding for data on the web and files on disk. What can you serialize:
+        - NET primitives that map to JavaScript primitives, such as numeric types, strings, and Boolean.
+        - User-defined plain old CLR objects (POCOs).
+        - One-dimensional and jagged arrays (T[][]).
+        - Collections and dictionaries
+       -  Industries use [NewtonSoft](https://www.newtonsoft.com/json) for working with large data serialization ad serialization process.
 ### Messaging format 
 | C#                            |         xml                        |   Json                           |
 |-------------------------------|------------------------------------|----------------------------------|
@@ -722,7 +728,20 @@ Creating objects in C# means that the CLR(Common Language Runtime) allocates mem
 |       decimal salary = 120.0M;|`</employee>`                       |      "salary":120                |
 |                               |                                    |  }                               |
 |   }                           |                                    |                                  |
-## [File Handling]
+## [File Handling](https://www.knowledgehut.com/tutorials/csharp/csharp-file-handling)
+- **Stream**: **System.IO.Stream** is an abstract class that provides standard methods to transfer bytes (read, write, etc.) to the source. 
+    - It is like a wrapper class to transfer bytes. 
+    - Classes that need to read/write bytes from a particular source must implement the Stream class.
+    - The following classes inherit Stream class to provide the functionality to Read/Write bytes from a particular source:
+        - **FileStream** reads or writes bytes from/to a physical file, whether it is a .txt, .exe, .jpg, or any other file. FileStream is derived from the Stream class.
+        - **MemoryStream**: MemoryStream reads or writes bytes that are stored in memory.
+        - **BufferedStream**: BufferedStream reads or writes bytes from other Streams to improve certain I/O operations' performance.
+        - **NetworkStream**: NetworkStream reads or writes bytes from a network socket.
+- **Stream Readers and Writers**
+    - **StreamReader**: StreamReader is a helper class for reading characters from a Stream by converting bytes into characters using an encoded value. It can be used to read strings (characters) from different Streams like FileStream, MemoryStream, etc.
+    - **StreamWriter**: StreamWriter is a helper class for writing a string to a Stream by converting characters into bytes. It can be used to write strings to different Streams such as FileStream, MemoryStream, etc.
+    - **BinaryReader**: BinaryReader is a helper class for reading primitive datatype from bytes.
+    - **BinaryWriter**: BinaryWriter writes primitive types in binary.
 - **System.IO** namespace provides four classes that allow you to manipulate individual files, as well as interact with a machine directory structure.
 - The **Directory** and **File** directly extends System.Object and supports the creation, copying, moving and deletion of files using various static methods.
     -  They only contain static methods and are never instantiated.
