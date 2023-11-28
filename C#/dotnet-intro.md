@@ -659,7 +659,7 @@ Software doesn't always behave as you would expect, but .NET Core has tools and 
 * You cannot use `this` keyword with static methods.
 * static classes can have static constructors. 
     * A static constructor is a called at some point between when the program starts and class is initiated.
-# Garbage Collector and Destructor in C#
+# [Garbage Collector and Destructor in C#](https://www.pluralsight.com/guides/destructors-uncertainty-of-destructive)
 Creating objects in C# means that the CLR(Common Language Runtime) allocates memory from the heap to be used by the object. 
 * This is repeated for each consecutive object creation.The limit is theoretically the available memory in the system. 
 * This means there is a limit, and we need to consider other applications that may need to use these resources. 
@@ -736,4 +736,6 @@ Creating objects in C# means that the CLR(Common Language Runtime) allocates mem
 - [C# Statements](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/statement-keywords)
 - [Interfaces](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface)
 - [Debugging in .Net](https://learn.microsoft.com/en-us/dotnet/core/tutorials/debugging-with-visual-studio-code?pivots=dotnet-6-0)
-- [Garbage collectors and destructors](https://www.pluralsight.com/guides/destructors-uncertainty-of-destructive)
+- [Garbage Collection Fundamentals](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals)
+- [Stream](https://www.tutorialsteacher.com/csharp/csharp-stream-io)
+- [File](https://www.tutorialsteacher.com/csharp/csharp-file)
