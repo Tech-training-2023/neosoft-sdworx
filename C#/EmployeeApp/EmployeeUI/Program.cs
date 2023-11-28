@@ -2,9 +2,12 @@
 using System.Text.Json;
 using EmployeeLibrary;
 
-SearchEmployeesByLastName();
+
+FileOperations fo=new FileOperations();
+fo.ReadFileViaFileInfo();
+/*SearchEmployeesByLastName();
 ReadEmployees();
-SearchEmployeeById();
+SearchEmployeeById();*/
 /*EmployeeOperations operations = new EmployeeOperations();
 var employeesList = operations.Init();
 AddNewEmployee(employeesList);

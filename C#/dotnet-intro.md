@@ -758,3 +758,5 @@ Creating objects in C# means that the CLR(Common Language Runtime) allocates mem
 - [Garbage Collection Fundamentals](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals)
 - [Stream](https://www.tutorialsteacher.com/csharp/csharp-stream-io)
 - [File](https://www.tutorialsteacher.com/csharp/csharp-file)
+- [FileInfo](https://www.tutorialsteacher.com/csharp/csharp-fileinfo)
+
