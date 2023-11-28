@@ -747,6 +747,10 @@ Creating objects in C# means that the CLR(Common Language Runtime) allocates mem
     -  They only contain static methods and are never instantiated.
 - The **FileInfo** and **DirectoryInfo** types are derived from the abstract class **FileSystemInfo** type and they are typically, employed for obtaining the full details of a file or directory because their members tend to return strongly typed objects.
     - They implement roughly the same public methods as a Directory and a File but they are stateful and the members of these classes are not static.
+
+## [Indexers](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/indexers/)
+Indexers allow instances of a class or struct to be indexed just like arrays. 
+- Indexers are like properties except that their accessors take parameters
 # References:
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)

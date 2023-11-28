@@ -3,8 +3,15 @@ using System.Text.Json;
 using EmployeeLibrary;
 
 
-FileOperations fo=new FileOperations();
-fo.ReadFileViaFileInfo();
+//indexers access
+var collection = new Cat();
+collection["cat1"] = "Kitty";
+collection["cat2"] = "Billy";
+collection["cat3"] = "Drake";
+Console.WriteLine(collection["cat3"]);
+
+//FileOperations fo=new FileOperations();
+//fo.BinaryReadWrite();
 /*SearchEmployeesByLastName();
 ReadEmployees();
 SearchEmployeeById();*/
