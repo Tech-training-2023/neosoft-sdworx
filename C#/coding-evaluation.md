@@ -1,2 +1,2 @@
 - [Kahoot]()
-- [Hackerrank()]www.hackerrank.com/csharp-1)
+- [Hackerrank](www.hackerrank.com/csharp-1)

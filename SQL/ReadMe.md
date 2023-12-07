@@ -1,5 +1,10 @@
+# Installation
+- [Installation on Premise](https://go.microsoft.com/fwlink/p/?linkid=2216019&clcid=0x809&culture=en-gb&country=gb)
+- [Install Sql Server Management Studio with Azure Data Studio](https://aka.ms/ssmsfullsetup)
+- [Adventure Works Database backup file](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms)
 # [SQL](https://www.tutorialspoint.com/sql/sql-overview.htm)
-- Structured Query Language
+- Structured Query Language - mostly used to query data in relational databases.
+- SQL is a Declarative language - Declarative languages enable you to describe the output you want, and leave the details of the steps required to produce the output to the execution engine. While Procedural languages like C, C++ enable you to define a sequence of instructions that the computer follows to perform a task.
 - Used to store, manipulate, retrieve/fetch data from RBDMS
 - Sql is a standard query language for RDBMS. Eg of RBDMS - mySql, PostGres, Excel, MS Access (JET Sql), Oracle (PL/Sql), Sybase, **Sql Server** (tSql)
 * Just a language made to be really good at storing and querying (grabbing data) information from a database
@@ -17,8 +22,8 @@
     * Data is the actual intersection between a row and column 
 ## [Relational Database Management System (RDBMS)](https://www.tutorialspoint.com/sql/sql-rdbms-concepts.htm)
 * A more advance form of a database with an even fancier name.
-* So instead of just storing data like a database, it gives "relationships" between data
-    * Look at Multiplicity section to showcase "relationship" between data
+* A relational database is one in which the data has been organized in multiple tables (technically referred to as relations), each representing a particular type of entity (such as a customer, product, or sales order). 
+* The attributes of these entities (for example, a customer's name, a product's price, or a sales order's order date) are defined as the columns, or attributes, of the table, and each row in the table represents an instance of the entity type (for example, a specific customer, product, or sales order).
 ## SQL Sublanguages
 * Essentially, people decided to organized what each statement (They decided to call it statements instead of functions so... start thinking they are the same thing) does in our RDBMS
 ### Data Definition Language (DDL)
@@ -45,8 +50,6 @@
 - used for transactions
 - Commit, savepoint, rollback
 
-
-
 ## Tables
 - Database object which stores data in the form of rows and columns
 - Record or rows are the part of the group of related values.
@@ -59,13 +62,13 @@
 | McDonalds       | Delhi    | 4       |
 | Mod's           |Virginia  | 4.2     |
 
-
+- [Activity on SELECT Statements](https://learn.microsoft.com/en-us/training/modules/introduction-to-transact-sql/)
 ## [Datatypes in Sql](https://www.tutorialspoint.com/sql/sql-data-types.htm)
 - Numeric - int, bigint, smallint, bit, decimal, numeric, money, smallmoney, approximate numerics (float, real)
 - Date and time - datetime, smalldatetime, date, time
 - Non-Unicode Character strings - fixed-length (char), variable length (varchar, varchar(max), text)
     - char - 8000 characters
 - Unicode Character Strings - fixed length (nchar), variable lengths (nvarchar, nvarchar(max), ntext)
-    - nachar - 4000 character
+    - nchar - 4000 character
 - Binary
-- mMiscellaneous - uniqueidentifier (guid), xml, timestamp
+- Miscellaneous - uniqueidentifier (guid), xml, timestamp
