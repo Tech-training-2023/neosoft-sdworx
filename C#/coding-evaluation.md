@@ -10,7 +10,7 @@
 ### Functionality 
 
 - add a new user 
-- ability to search user as admin
+- ability to search user (optional as admin)
 - display details of a restaurant for user
 - add reviews to a restaurant as a user
 - view details of restaurants as a user
