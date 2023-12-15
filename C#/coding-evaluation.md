@@ -18,7 +18,7 @@
 - calculate reviews’ average rating for each restaurant 
 - search restaurant (by name, rating, zip code, etc.) 
 
-### Suggestd Models 
+### Suggested Models/obejcts
 - User 
 - Restaurant 
 - Review 
@@ -41,4 +41,24 @@
 - Solution containing both the projects.
 
 
- 
+ # Teams 
+ ## Group - 1 Mauritius
+ Milesh
+    - Abdurrahman
+    - Akhilesh
+    - Jeshwan
+    - Yehsan
+    - Yuvraj
+
+ ## Group - 2 Mauritius
+ Melanie
+    - Fawzaan
+    - Henish
+    - Koushal
+    - Waseemah
+ ## Group - 3 Poland 
+ Piotr
+    - Diana
+    - Filip
+    - Marcel
+    - Monika
