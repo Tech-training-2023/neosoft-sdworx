@@ -752,6 +752,7 @@ Creating objects in C# means that the CLR(Common Language Runtime) allocates mem
 Indexers allow instances of a class or struct to be indexed just like arrays. 
 - Indexers are like properties except that their accessors take parameters
 # References:
+- [Foundational C# - self-guided](https://www.freecodecamp.org/learn/foundational-c-sharp-with-microsoft/#debug-c-sharp-console-applications)
 - [.Net Implementations](https://learn.microsoft.com/en-in/dotnet/fundamentals/implementations)
 - [.Net glossary](https://learn.microsoft.com/en-in/dotnet/standard/glossary)
 - [.Net version releases](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
