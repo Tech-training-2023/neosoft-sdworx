@@ -18,8 +18,8 @@
 - calculate reviews’ average rating for each restaurant 
 - search restaurant (by name, rating, zip code, etc.) 
 
-### Suggested Models/obejcts
-- User 
+### Suggested Models/objePcts
+- User
 - Restaurant 
 - Review 
 
@@ -56,6 +56,7 @@
     - Henish
     - Koushal
     - Waseemah
+    - Tasneem
  ## Group - 3 Poland 
  Piotr
     - Diana
