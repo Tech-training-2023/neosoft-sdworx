@@ -7,6 +7,7 @@ namespace RestaurantsApi
         IEnumerable<Restaurant> GetAllRestaurants();
         void AddRestaurant(Restaurant restaurant);
         void UpdateRestaurant(int id,Restaurant restaurant);
+        void DeleteRestaurant(int id);
     }
     public class RestaurantsRepository : IRestaurantRepository
     {
@@ -21,6 +22,12 @@ namespace RestaurantsApi
         {
             if(restaurant != null)
                 restaurants.Add(restaurant);
+        }
+
+        public void DeleteRestaurant(int id)
+        {
+            if(id > 0 && id <= restaurants.Count)
+                restaurants.RemoveAt(id-1);
         }
 
         public IEnumerable<Restaurant> GetAllRestaurants()

@@ -10,7 +10,7 @@ namespace RestaurantsApi.Controllers
     {
         IRestaurantRepository repository = new RestaurantsRepository();
         // GET: api/<RestaurantController>
-        [HttpGet("GetRestaurants")]
+        [HttpGet(Name ="GetRestaurants")]
         public IEnumerable<Restaurant> Get()
         {
             return repository.GetAllRestaurants();
@@ -18,10 +18,20 @@ namespace RestaurantsApi.Controllers
         
         // GET api/<RestaurantController>/5
         [HttpGet("{id}")]
-        public Restaurant Get(int id)
+        public Restaurant GetRestaurantById(int id)
         {
             return repository.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
         }
+        //[HttpGet("{name}")]
+        //public Restaurant GetRestaurantByName([FromQuery]string name)
+        //{
+        //    return repository.GetAllRestaurants().Where(r => r.Name == name).FirstOrDefault();
+        //}
+        //[HttpGet("{postcode}")]
+        //public IEnumerable<Restaurant> GetRestaurantsByPostcode([FromQuery] string postcode)
+        //{
+        //    return repository.GetAllRestaurants().Where(r => r.Postcode == postcode).ToList();
+        //}
 
         // POST api/<RestaurantController>
         [HttpPost]
@@ -37,10 +47,11 @@ namespace RestaurantsApi.Controllers
             repository.UpdateRestaurant(id,r);
         }
 
-        /*// DELETE api/<RestaurantController>/5
+        // DELETE api/<RestaurantController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-        }*/
+            repository.DeleteRestaurant(id);
+        }
     }
 }
