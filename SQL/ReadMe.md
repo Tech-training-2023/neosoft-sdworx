@@ -123,3 +123,127 @@ SELECT orderid, custid, empid, orderdate
 FROM Sales.Orders 
 WHERE orderdate = '20070825'; 
 ```
+
+
+# Constraints
+* They are a way for us to limit the data that will come into your table (hence the name "constraints")
+* It will specify either one or more rules that the data you are inputting in that column must follow
+## some commonly used constraints
+1. Type - Restricts what datatype you can store in a column
+2. Unique - Every data in a column cannot have repeating values
+3. Not null - Ensures every data in a column must have a value
+4. Check - Adds an extra condition on the data
+    * Ex: age column must be above 18
+```SQL
+CREATE TABLE Person (
+    Age int CHECK (Age >= 18)
+)
+```
+5. Primary Key
+    * Implicitly Unique and Not null
+    * Acts as the unique identifier for the rows in a table
+6. Foreign Key
+    * Data in this column references the primary key of another table
+    * Establishes relationships between 2 columns in the same table or different tables
+
+# Multiplicity
+* It is a way to describe the relationships between 2 tables
+* We will use the primary and foreign keys to established these relationships
+## Three main categories of relationships
+* One to One
+    * When one row in Table A is directly related to one row in Table B and vice versa
+    * You must use the unique constraint in the foreign key to ensure that only one row in Table B will be related to one row in Table A
+    * Ex: One person can only have one heart
+* One to Many
+    * When one row in Table A is related to multiple rows in Table B
+    * Ex: One person has many fingers but only one finger is related to one person (you cannot share fingers!)
+* Many to Many
+    * Many rows in Table A is related to many rows in Table B
+    * You must construct a join table to achieve many to many relationship
+        * Join tables must at least consists of two columns that are both foreign keys that either points to Table A and Table B
+        * Essentially, one column references Table A and one column references Table B
+    * Ex: A pokemon can have many abilities and An ability can have many pokemon
+        * Basically Tackle can exist to many pokemons and can share it and pokemon can have many abilities beyond just tackle
+
+
+# EF Core
+## What is ORM?
+- **O**bject **R**elational **M**apper - It helps to map Server side language objects to relational entities of database.
+- By Using ORM the developer is at ease as not much of proficiency is required to have appliaction connected with database.
+- Using ORM a dev has more control over database and its entities via code.
+- The dev do not need to write complex sql queries and remember the complicated syntax either.
+- Eg: EntityFramework, EntityFrameworkCore, nHibernate (for java) etc...
+- The ORM that we will be using is Entity Framework Core
+- ORM is just a wrapper class library over the database middleware like ADO.Net
+
+## Entity Framework Core
+* One of the popular ORM for .NET core
+* It allows us to work with a database by using .NET objects and almost completely removing the need for most data-access code you usually have to write (unlike our ADO.NET)
+
+## Benefits of using EFCore:
+- Compatible with .Net and its versions for Windows, macOS, Linux etc...
+- Dev team do not need to be expert in complex SQL operations
+- It is easy to use as every this is Object Oriented
+- It also encapsulates complex ADO.Net code (as a developer you don't need to be well versed with ADO.Net)
+- Since its an encapsulation to ADO.Net it helps to prevent attacks like Sql Injection. Although you can still use queries too for any complex scenario.
+- Querying using EF is simply done by using Linq.
+
+## Two approaches to EF
+* Database first approach
+    * This is when you created a database architecture/schema first
+    * It will create the entities and DBcontext for us based on the database
+* Code first approach
+    * This is when you create a .NET application first
+    * It will create the database for you and establish the relationships as well based on the models
+    * You would need to create the DBContext
+
+### Setup, installation and configuration (most of the steps are common for code first and Db first)
+Install the listed packages in your DL project through .Net CLI or Nuget Package Manager:
+- `Microsoft.EntityFrameworkCore.Design` or in VS code: ```dotnet add package Microsoft.EntityFrameworkCore.Design```
+    - This should also be installed in your startup project
+- `Microsoft.EntityFrameworkCore.Tools` or VSCode : ```dotnet add package Microsoft.EntityFrameworkCore.Tools```
+- `Microsoft.EntityFrameworkCore.SqlServer` or in VScode:  ```dotnet add package Npgsql.EntityFrameworkCore.SQLServer```
+- `Microsoft.Extensions.Configuration.Json` or in VSCode  ```dotnet add package Microsoft.Extensions.Configuration.Json```
+- once you Install the packages run `dotnet ef` command in PMC to verify if Entity Framework is installed. You will see some EF picture with a unicorn as a symbol that EFCore has been installed successfully
+
+### DB First Steps
+1. Have the following:
+    - Data Layer
+    - The necessary packages installed in DL project
+2. Run the long scaffold code in the DL project:
+    - With Fluent API in Visual Studio PMC - `Scaffold-DbContext "Server=tcp:<server-name>.database.windows.net,1433;Initial Catalog=<Db name>; User ID=<user id>;Password=<password>;" -Provider Microsoft.EntityFrameworkCore.SqlServer -o Entities -Tables table1, table2, table3`
+    - With Fluent API in VSCode terminal - `dotnet ef dbcontext scaffold "Server=tcp:<server name>.database.windows.net,1433;Initial Catalog=<db name>;User ID=<userid>;Password=<password>" Microsoft.EntityFrameworkCore.SqlServer --force -o Entities`
+      or 
+    - Connection String with  Data Annotaions in Visual Studio PMC - `Scaffold-DbContext "Server=tcp:<server-name>.database.windows.net,1433;Initial Catalog=<Db name>; User ID=<user id>;Password=<password>;" -Provider Microsoft.EntityFrameworkCore.SqlServer -DataAnnotations -o Entities -Tables table1, table2, table3`
+    - Connection String with Data Annotations in VSCode terminal : `dotnet ef dbcontext scaffold "Server=tcp:<server name>.database.windows.net,1433;Initial Catalog=<db name>;User ID=<user id>;Password=<Password>" Microsoft.EntityFrameworkCore.SqlServer --force --data-annotations -o Entities`
+3. Edit the DBContext:
+    - Change the name if its weird
+    - Edit the onconfiguring method to safely refer to the connection string using appsettings.json
+4. Any major change to table structure:
+    - If you add a new table, delete a table: go to step 2
+    - If you've altered columns in an existing table: edit the necessary entity to reflect those changes
+
+## Useful terminology/artificats to know when working with EF
+* DBContext
+    * Represents a session with the database
+    * So any CRUD operations will start here
+    * Also used to configure how EF will construct your database architecture using **Fluent API** in OnModelCreating() method
+* Migration - for code - first approach only
+    * They are a snapshot of the database architecture given the current state of your models
+    * So if you change your models/db architecture, you would need to create another migration and update the database
+* Entities
+    * It is the model version of the tables of your database
+    * So a Student table in Database will have a student entity in EF core
+* Relationships
+    * Same thing as multiplicity in SQL
+    * They way you signify the relationships will be use of data annotations/Fluent API/Model structure
+* [Data Annotations](https://www.entityframeworktutorial.net/code-first/dataannotation-in-code-first.aspx)
+    * When you use Scaffolding there is an option to add flag `-DataAnnotations` which means you will see entity classes with some attributes/annotations on the top like `[Key]`, `[StringLength]` etc
+    * Data Annotations attributes are .NET attributes which can be applied on an entity class or properties to override default conventions in EF.
+    * Data annotation attributes are included in the `System.ComponentModel.DataAnnotations` and `System.ComponentModel.DataAnnotations.Schema` 
+* **Note**: Data annotations only give you a subset of configuration options. Fluent API provides a full set of configuration options available in Code-First. This is why Microsoft suggests to use **[Fluent API](https://www.entityframeworktutorial.net/code-first/fluent-api-in-code-first.aspx)** instead of Data Annotations.
+
+Other things you'll need with DBFirst:
+- A Mapper to map your DB entities to BL entities
+- [Tutorial guide](https://www.entityframeworktutorial.net/what-is-entityframework.aspx)
+- [Exercises](https://learn.microsoft.com/en-us/training/modules/persist-data-ef-core/)
