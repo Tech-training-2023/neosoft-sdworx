@@ -211,6 +211,7 @@ Install the listed packages in your DL project through .Net CLI or Nuget Package
     - Data Layer
     - The necessary packages installed in DL project
 2. Run the long scaffold code in the DL project:
+- `dotnet ef dbcontext scaffold "Server=DESKTOP-T5LA3TC\SQLEXPRESS;Initial Catalog=RestaurantDb;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer --output-dir Entities ` Other connection string options:
     - With Fluent API in Visual Studio PMC - `Scaffold-DbContext "Server=tcp:<server-name>.database.windows.net,1433;Initial Catalog=<Db name>; User ID=<user id>;Password=<password>;" -Provider Microsoft.EntityFrameworkCore.SqlServer -o Entities -Tables table1, table2, table3`
     - With Fluent API in VSCode terminal - `dotnet ef dbcontext scaffold "Server=tcp:<server name>.database.windows.net,1433;Initial Catalog=<db name>;User ID=<userid>;Password=<password>" Microsoft.EntityFrameworkCore.SqlServer --force -o Entities`
       or 
