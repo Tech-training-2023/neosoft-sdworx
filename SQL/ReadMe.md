@@ -247,3 +247,26 @@ Other things you'll need with DBFirst:
 - A Mapper to map your DB entities to BL entities
 - [Tutorial guide](https://www.entityframeworktutorial.net/what-is-entityframework.aspx)
 - [Exercises](https://learn.microsoft.com/en-us/training/modules/persist-data-ef-core/)
+
+## EF Core - Code First
+- Most conventions and steps for EFCore Code first and EF6 are same
+### Packages
+- Install the listed packages in your DL project:
+- `dotnet add package Microsoft.EntityFrameworkCore.Tools or Install-Package Microsoft.EntityFrameworkCore.Tools`
+- `dotnet add package Microsoft.EntityFrameworkCore.SQLServer or Install-Package Microsoft.EntityFrameworkCore.SQLServer`
+## Code First Steps
+1. Have the following:
+   - Data Layer
+   - The necessary packages installed in DL project
+   - Configure connection string. For our project with many layers, it is recommended to keep connection string in the User Secrets of Asp.Net core web API project.
+2. Implement a DbContext
+   - Override the OnConfiguring method to point to the connection string stored in your appsettings.json. Not required if you are configuring the Connection String in API project. 
+   - Override the OnModelCreating method to manually map some relationships EF Core complains about
+3. Run the migration code in the DL project
+    - `dotnet ef migrations add NameOfMigration -c DbContext --startup-project <relative path to project file>. Ex dotnet ef migrations add InitialCreate -c PokeDbContext --startup-project ../PokemonApi/PokemonApi.csproj`
+                       or
+    - `Add-Migration "Name of the Migration" (In PMC point it to Data project)`
+4. Update your DB in the DL project
+    - `dotnet ef database update --startup-project <relative path to project file>` or
+    - `Update-Database (In PMC point it to Data project)`
+5. Any changes to your models/entities go to step 3
