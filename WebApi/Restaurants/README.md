@@ -250,14 +250,8 @@
 3. REST conceptual:
     - https://martinfowler.com/articles/richardsonMaturityModel.html
 4. REST implementation in ASP.NET Core:
-    - Basic for QC and Quiz: https://www.tutorialsteacher.com/webapi
+    - [Overview of Asp.Net core Web API](https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-8.0)
     - https://docs.microsoft.com/en-us/aspnet/core/web-api
-    - https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design
-    - https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-implementation
-5. SOAP vs REST:
-    - https://octoperf.com/blog/2018/03/26/soap-vs-rest/
-6. Swagger implementation with ASP.NET Core:
-    - https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle
-7. Filters in Asp.Net:
+5.. Filters in Asp.Net:
     - https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters?view=aspnetcore-6.0
 
