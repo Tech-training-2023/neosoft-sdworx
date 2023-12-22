@@ -27,7 +27,7 @@ namespace RestaurantsData.Entities
                 optionsBuilder.UseSqlServer("Server=DESKTOP-T5LA3TC\\SQLEXPRESS;Initial Catalog=RestaurantDb;Trusted_Connection=True;");
             }
         }
-
+        //Fluent API
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Restaurant>(entity =>

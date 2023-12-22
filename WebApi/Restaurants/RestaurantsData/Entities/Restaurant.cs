@@ -16,6 +16,6 @@ namespace RestaurantsData.Entities
         public string Postcode { get; set; } = null!;
         public string? State { get; set; }
 
-        public virtual ICollection<Review> Reviews { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }//navigation
     }
 }

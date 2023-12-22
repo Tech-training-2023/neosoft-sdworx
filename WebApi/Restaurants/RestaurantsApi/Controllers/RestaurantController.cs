@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestaurantsApi.Models;
+using RestaurantsData.Entities;
+using data = RestaurantsData ;
+
+//using RestaurantsApi.Models;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace RestaurantsApi.Controllers
@@ -8,17 +11,18 @@ namespace RestaurantsApi.Controllers
     [ApiController]
     public class RestaurantController : ControllerBase
     {
-        IRestaurantRepository repository = new RestaurantsRepository();
+        data.IRestaurantRepository repository = new data.RestaurantRepository();
         // GET: api/<RestaurantController>
+
         [HttpGet(Name ="GetRestaurants")]
-        public IEnumerable<Restaurant> Get()
+        public IQueryable<Restaurant> Get()
         {
             return repository.GetAllRestaurants();
         }
         
         // GET api/<RestaurantController>/5
-        [HttpGet("{id}")]
-        public Restaurant GetRestaurantById(int id)
+        //[HttpGet("{id}")]
+        /*public Restaurant GetRestaurantById(int id)
         {
             return repository.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
         }
@@ -52,6 +56,6 @@ namespace RestaurantsApi.Controllers
         public void Delete(int id)
         {
             repository.DeleteRestaurant(id);
-        }
+        }*/
     }
 }
