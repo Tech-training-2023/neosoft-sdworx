@@ -33,7 +33,7 @@ namespace RestaurantsDataCodeFirst
             modelBuilder.Entity<Restaurant>()
                 .Property(restaurant => restaurant.Id)
                 .ValueGeneratedOnAdd();
-            modelBuilder.Entity<Restaurant>().HasData(new Restaurant { Id=1, Name = "Chipotle", City ="London", Postcode = "TR4 YU7", State = "London" });
+            modelBuilder.Entity<Restaurant>().HasData(new Restaurant { Id=1, Name = "Chipotle", City ="London", Postcode = "TR4 YU7", State = "London", Cuisine = "TexMex" });
             modelBuilder.Entity<Review>()
                 .Property(review => review.Id)
                 .ValueGeneratedOnAdd();

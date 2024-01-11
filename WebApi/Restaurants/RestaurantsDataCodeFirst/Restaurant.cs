@@ -23,6 +23,7 @@ namespace RestaurantsDataCodeFirst
         public string  City { get; set; }
         //Navigation Property
         public List<Review> Reviews { get; set; }
+        public string? Cuisine { get; set; }
         public override string ToString()
         {
             return $"Name: {Name} \n Location: {City} {State} {Postcode}";
