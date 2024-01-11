@@ -25,7 +25,7 @@ namespace RestaurantsDataCodeFirst
         public List<Review> Reviews { get; set; }
         public override string ToString()
         {
-            return $"Name: {Name} \n Location: {City} {State} {Postcode}"
+            return $"Name: {Name} \n Location: {City} {State} {Postcode}";
         }
     }
 }

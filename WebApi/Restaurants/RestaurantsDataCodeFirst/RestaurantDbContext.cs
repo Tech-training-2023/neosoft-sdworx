@@ -21,15 +21,23 @@ namespace RestaurantsDataCodeFirst
         //declaring the entities
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Review> Reviews { get; set; }
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=DESKTOP-T5LA3TC\\SQLEXPRESS;Initial Catalog=RestaurantDatabase;Trusted_Connection=True;");
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Restaurant>()
                 .Property(restaurant => restaurant.Id)
                 .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Restaurant>().HasData(new Restaurant { Id=1, Name = "Chipotle", City ="London", Postcode = "TR4 YU7", State = "London" });
             modelBuilder.Entity<Review>()
                 .Property(review => review.Id)
                 .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Review>().HasData(new Review {Id=1, Rating = 4, Description = "Good fast food in Tex mex", RestaurantId = 1 });
         }
     }
 }

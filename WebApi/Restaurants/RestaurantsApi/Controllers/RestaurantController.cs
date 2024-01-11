@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestaurantsData.Entities;
-using data = RestaurantsData ;
+using data = RestaurantsDataCodeFirst ;
 
 //using RestaurantsApi.Models;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,7 +14,7 @@ namespace RestaurantsApi.Controllers
         // GET: api/<RestaurantController>
 
         [HttpGet(Name ="GetRestaurants")]
-        public IQueryable<Restaurant> Get()
+        public IQueryable<data.Restaurant> Get()
         {
             return repository.GetAllRestaurants();
         }
