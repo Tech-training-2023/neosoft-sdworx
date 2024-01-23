@@ -271,3 +271,9 @@ Other things you'll need with DBFirst:
     - `dotnet ef database update --startup-project <relative path to project file>` or
     - `Update-Database (In PMC point it to Data project)`
 5. Any changes to your models/entities go to step 3
+
+# Stored Procedures
+A Stored procedure are named collections of T-SQL statements created with `CREATE PROCEDURE` command. They encapsulate many server and database commands and can provide a consistent API to client applications using input parameters, output parameters and return values.
+- Procedures can return results, manipulate data and perfrom administrative actions on the server.
+- Using Stored procedures also ensure a layer is creates that developers and admins can ensure that all activity is performed by trusted code modules that validate input and also handle the errors.
+- Execute Store procedure using `EXECUTE <name of of the proc>` or `EXEC <name of the proc>` command 
