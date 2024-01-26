@@ -272,8 +272,33 @@ Other things you'll need with DBFirst:
     - `Update-Database (In PMC point it to Data project)`
 5. Any changes to your models/entities go to step 3
 
-# Stored Procedures
+# [Stored Procedures](https://learn.microsoft.com/en-us/sql/relational-databases/stored-procedures/stored-procedures-database-engine?view=sql-server-ver16)
 A Stored procedure are named collections of T-SQL statements created with `CREATE PROCEDURE` command. They encapsulate many server and database commands and can provide a consistent API to client applications using input parameters, output parameters and return values.
 - Procedures can return results, manipulate data and perfrom administrative actions on the server.
 - Using Stored procedures also ensure a layer is creates that developers and admins can ensure that all activity is performed by trusted code modules that validate input and also handle the errors.
 - Execute Store procedure using `EXECUTE <name of of the proc>` or `EXEC <name of the proc>` command 
+## Benefits of a stored procedure
+- Reduced server/client network traffic
+- Stronger security
+- Code reusability
+- Easier maintainence
+- Improved performance
+
+## Dynamic SQL Queries
+Dynamic SQL queries provides a mechanism for constructing a character string that is passed to SQL Server, interpreted as a command and executed.
+- Why? You might not know all the values necessaru for your query unitl execution time. Such as taking the results of one query (ex pivot query) or an administrative maintainence routine that accepts objects names at runtime. 
+- TSQL supports 2 methods to build dynamic SQL expressions:
+1. Using `EXECUTE` or `EXEC` Command : It does not support any parameters and supports use of a string as an input
+```
+DECLARE @sqlstring as Varchar(1000)
+SET @sqlstring = 'SELECT empid,' +' lastname '+' FROM HR.Employees;'
+EXEC (@sqlstring);
+Go
+```
+2. Using System stored procedure `sp_executesql`: supports string input for the query as well as allow additional input parameters.
+```
+DELCARE @sqlstring as nvarchar(256) = N'SELECT GETDATE() as date';
+EXEC sp_executesql @statement = @sqlcode;
+go
+```
+- [Activity ob Stored procedure, dynamoc sql and functions](https://learn.microsoft.com/en-us/training/modules/create-stored-procedures-table-valued-functions/)
