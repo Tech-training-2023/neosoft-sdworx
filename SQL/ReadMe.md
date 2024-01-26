@@ -301,4 +301,4 @@ DELCARE @sqlstring as nvarchar(256) = N'SELECT GETDATE() as date';
 EXEC sp_executesql @statement = @sqlcode;
 go
 ```
-- [Activity ob Stored procedure, dynamoc sql and functions](https://learn.microsoft.com/en-us/training/modules/create-stored-procedures-table-valued-functions/)
+- [Activity on Stored procedure, dynamic sql and functions](https://learn.microsoft.com/en-us/training/modules/create-stored-procedures-table-valued-functions/)
