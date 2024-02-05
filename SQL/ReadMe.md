@@ -302,3 +302,17 @@ EXEC sp_executesql @statement = @sqlcode;
 go
 ```
 - [Activity on Stored procedure, dynamic sql and functions](https://learn.microsoft.com/en-us/training/modules/create-stored-procedures-table-valued-functions/)
+
+## Union, Union All
+UNION and UNION ALL provide a mechanism to add one set to another; you can then stack result sets from two or more queries into a single output result set. 
+- UNION stacks rows, compared to JOIN, which combines columns from different sources. 
+- It is a form of SET operator and as per set theory, a set does not provide a sort order and includes only distinct rows. If you need the results sorted, you should add an ORDER BY to the final results, as you may not use it inside the input queries. 
+
+- UNION combines all rows from each input set, and then filters out duplicates. By using the UNION operator, you can combine rows from one input set with rows from another into a resulting set. If a row appears in either of the input sets, it will be returned in the output. Duplicate rows are eliminated by the UNION operator. 
+- In UNION operator, you can combine rows from one input set with rows from another into a resulting set. If a row appears in either of the input sets, it will be returned in the output. Duplicate rows are eliminated by the UNION operator. 
+- From a performance standpoint, the use of UNION will include a filter operation, whether or not there are duplicate rows. If you need to combine setsand know that there are no duplicates, consider using UNION ALL to save the overhead of the distinct filter. 
+
+## EXCEPT and INTERSECT
+While UNION and UNION ALL combine all rows from input sets, you might need to return either only those rows in one set but not in the other—or only rows that are present in both sets. For these purposes, the EXCEPT and INTERSECT operators might be useful to your queries.
+- The T-SQL INTERSECT operator, added in SQL Server 2005, returns only distinct rows that appear in both input sets.  No duplicate rows will be returned by the operation. No duplicate rows will be returned by the operation. 
+- The T-SQL EXCEPT operate, added in SQL Server 2005, returns only distinct rows that appear in one set and not in the other. Specifically, EXCPT returns rows from the input set listed first in the query.

@@ -12,7 +12,7 @@ go
 alter proc sp_getRestaurantDetailsById
 	@id as int 
 as
-	selec rt.id as Id, rt.name as Name,rt.city + ' '+ rt.state + '-' + rt.postcode as Address, rv.rating as Rating, 
+	select rt.id as Id, rt.name as Name,rt.city + ' '+ rt.state + '-' + rt.postcode as Address, rv.rating as Rating, 
 	rv.decription as Description from Restaurants as rt
 	join reviews rv
 	on rt.id = rv.restaurantId
