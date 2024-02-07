@@ -352,3 +352,65 @@ Another form of table expression provided by SQL Server is the CTE. Similar in s
         )
         SELECT ... FROM ...;
         ```
+## APPLY Operator
+As an alternative to combining or comparing rows from two sets, SQL Server provides a mechanism to apply a table expression from one set on each row in the other set.
+- SQL Server provides the APPLY operator to enable queries that evaluate rows in one input set against the expression that defines the second input set. 
+- APPLY is a table operator, not a set operator. You will use APPLY in a FROM clause, like a JOIN, rather than as a set operator that operates on two compatible result sets of queries. 
+- Conceptually, the APPLY operator is similar to a correlated subquery in that it applies a correlated table expression to each row from a table. However, APPLY differs from correlated subqueries by returning a table-valued result rather than a scalar or multi-valued result.
+- When describing input tables used with APPLY, the terms “left” and “right” are used in the same way as they are with the JOIN operator, based on the order in which they appear, relative to one another in the FROM clause.
+- Syntax - Each result from the left table source will be passed as an input to the right table source:
+```
+SELECT <column_list> 
+FROM <left_table_source> AS <alias> 
+[CROSS]|[OUTER] APPLY 
+ <right_table_source> AS <alias>;
+```
+- APPLY supports two different forms: CROSS APPLY and OUTER APPLY
+    - **CROSS APPLY** - The CROSS APPLY form of the operator will include in the output result set only those values from the left table source where a value is found in the right table source. 
+        -  Note that the term CROSS, when used in CROSS APPLY, does not have the same meaning as CROSS when used in CROSS JOIN. Whereas a CROSS JOIN returns all the possible combinations of the left and right table sources, CROSS APPLY returns only the values from the left table source where a value is found in the right table source.
+        - This makes a CROSS APPLY statement very similar to an INNER JOIN—this similarity is such that almost all T-SQL statements that include an INNER JOIN between two tables can be rewritten as a statement using CROSS APPLY.
+    - **OUTER APPLY** - As you learned in an earlier topic, APPLY executes the right table source for each of the rows in the left table source, and returns the results as a single result set. 
+        - The OUTER APPLY form of the operator will include all the values from the left table source in the output result set and values from the right table source where they exist. Where the right table source does not contain a value for a left table source value, columns derived from the right table source will have a NULL value. 
+        -  This makes an OUTER APPLY statement very similar to a LEFT OUTER JOIN—this similarity is such that almost all T-SQL statements that include a LEFT OUTER JOIN between two tables can be rewritten as a statement using OUTER APPLY.
+        - As with LEFT OUTER JOIN, the order in which the table sources appear might influence the result. 
+        - The following SELECT statement uses a LEFT OUTER JOIN between the suppliers table and the customers table to show all countries where suppliers are located—and which of those countries also contain customers:
+        ```
+        SELECT DISTINCT s.country AS supplier_country, c.country as customer_country 
+        FROM Production.Suppliers AS s 
+        LEFT OUTER JOIN Sales.Customers AS c 
+        ON c.country = s.country 
+        ORDER BY supplier_country; 
+        ```
+        -  Notice that the JOIN predicate Sales.Customers.Country = Production.Suppliers.Country moves from the LEFT OUTER JOIN clause to the WHERE clause of the right table source when the query is rewritten to use OUTER APPLY.
+        ```
+        SELECT DISTINCT s.country AS supplier_country, c.country as customer_country 
+        FROM Production.Suppliers AS s 
+        OUTER APPLY ( SELECT country 
+        FROM Sales.Customers AS cu 
+        WHERE cu.country = s.country 
+        ) AS c 
+        ORDER BY supplier_country;
+        ```
+### CROSS APPLY and OUTER APPLY FEATURE
+As you learned in the previous topics, there are many similarities between CROSS APPLY and INNER JOIN, and OUTER APPLY and LEFT OUTER JOIN. 
+- However, the APPLY operators enable some types of query to be executed which could not be written using JOINs. These queries rely on the left table source being processed before being applied to the right table source. Two examples shown in this topic are using a query returning top results for each input value and a TVF as the right table source. 
+- A sales manager has requested a report showing the three most recent orders for each customer, including customers with no orders. The following query is one way to meet this requirement: OUTER APPLY: Three Most Recent Orders Per Customer Example
+```
+SELECT C.custid, TopOrders.orderid, TopOrders.orderdate 
+FROM Sales.Customers AS C 
+OUTER APPLY 
+ (SELECT TOP (3) orderid, CAST(orderdate AS date) AS orderdate 
+ FROM Sales.Orders AS O 
+ WHERE O.custid = C.custid 
+ ORDER BY orderdate DESC, orderid DESC) AS TopOrders;
+```
+- Note that because OUTER APPLY is used here, customers with no orders are included in the result (with NULL in the orderid and orderdate columns). If CROSS APPLY were used instead of OUTER APPLY, customers with no orders would not appear in the results. Partial results, including rows with NULLs, appears.
+- A TVF might be used as the right table source for an instance of the APPLY operator. 
+- The following example uses the supplierid column from the left input table as an input parameter to a TVF named dbo.fn_TopProductsByShipper. If there are rows in the Suppliers table with no corresponding products, the rows will not be displayed.
+```
+SELECT S.supplierid, s.companyname, P.productid, P.productname, P.unitprice 
+FROM Production.Suppliers AS S 
+CROSS APPLY dbo.fn_TopProductsByShipper(S.supplierid) AS P;
+```
+- Note that because CROSS APPLY is used here, suppliers with no products are 
+excluded from the result. 
