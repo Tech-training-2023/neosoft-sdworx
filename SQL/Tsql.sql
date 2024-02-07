@@ -1,5 +1,6 @@
 SELECT TOP(1) Name, ProductID, ListPrice, StandardCost FROM SalesLT.Product ORDER BY ListPrice DESC
 
+--Subquery
 select ProductId, Name, StandardCost 
 FROM SalesLT.Product where 
 ListPrice = (SELECT MAX(Listprice) FROM SalesLT.Product)

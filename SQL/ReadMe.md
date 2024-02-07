@@ -343,4 +343,12 @@ Another form of table expression provided by SQL Server is the CTE. Similar in s
     - CTEs require a name for the table expression, in addition to unique names for each of the columns referenced in the CTE's SELECT clause.
     - CTEs may use inline or external aliases for columns. 
     -  Unlike a derived table, a CTE may be referenced multiple times in the same query with one definition. Multiple CTEs may also be defined in the same WITH clause. 
-    - CTEs support recursion, in which the expression is defined with a reference to itself.
+    - CTEs support recursion, in which the expression is defined with a reference to itself. 
+        - [Recursive CTE](https://docs.snowflake.com/en/user-guide/queries-cte) is a CTE that references to itself . A recursive CTE can join a table to itself as amny times as necessary to process hierarchiical data in the table.
+        ```
+        WITH [ RECURSIVE ] <cte_name> AS
+        (
+        <anchor_clause> UNION ALL <recursive_clause>
+        )
+        SELECT ... FROM ...;
+        ```
