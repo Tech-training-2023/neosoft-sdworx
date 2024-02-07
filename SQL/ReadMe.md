@@ -315,4 +315,32 @@ UNION and UNION ALL provide a mechanism to add one set to another; you can then 
 ## EXCEPT and INTERSECT
 While UNION and UNION ALL combine all rows from input sets, you might need to return either only those rows in one set but not in the other—or only rows that are present in both sets. For these purposes, the EXCEPT and INTERSECT operators might be useful to your queries.
 - The T-SQL INTERSECT operator, added in SQL Server 2005, returns only distinct rows that appear in both input sets.  No duplicate rows will be returned by the operation. No duplicate rows will be returned by the operation. 
-- The T-SQL EXCEPT operate, added in SQL Server 2005, returns only distinct rows that appear in one set and not in the other. Specifically, EXCPT returns rows from the input set listed first in the query.
+- The T-SQL EXCEPT operate, added in SQL Server 2005, returns only distinct rows that appear in one set and not in the other. Specifically, EXECPT returns rows from the input set listed first in the query.
+
+## Derived Tables
+- Previously you learned about subqueries, which are queries nested within other SELECT statements. 
+- Like subqueries, you create derived tables in the FROM clause of an outer SELECT statement.
+- Unlike subqueries, you write derived tables using a named expression that is logically equivalent to a table and may be referenced as a table elsewhere in the outer query.
+- Derived tables allow you to write T-SQL statements that are more modular, helping you break down complex queries into more manageable parts. 
+- Using derived tables in your queries can also provide workarounds for some of the restrictions imposed by the logical order of query processing, such as the use of column aliases. 
+- When writing queries that use derived tables, consider the following: 
+    - Derived tables are not stored in the database. Therefore, no special security privileges are required to write queries using derived tables, other than the rights to select from the source objects. 
+    - A derived table is created at the time of execution of the outer query and goes out of scope when the outer query ends. 
+    -  Derived tables do not necessarily have an impact on performance, compared to the same query expressed differently. When the query is processed, the statement is unpacked and evaluated against the underlying database objects.
+- When writing queries that use derived tables, keep the following guidelines in mind: 
+    - The nested SELECT statement that defines the derived table must have an alias assigned to it. The outer query will use the alias in its SELECT statement in much the same way you refer to aliased tables joined in a FROM clause.
+    - All columns referenced in the derived table's SELECT clause should be assigned aliases, a best practice that is not always required in T-SQL. Each alias must be unique within the expression. The column aliases may be declared inline with the columns or externally to the clause.
+        - When using external aliases, if the inner query is executed separately, the aliases will not be returned to the outer query. For ease of testing and readability, it is recommended that you use inline rather than external aliases. 
+    - The SELECT statement that defines the derived table expression may not use an ORDER BY clause, unless it also includes a TOP operator, an OFFSET/FETCH clause. As a result, there is no sort order provided by the derived table. You sort the results in the outer query.
+    -  The SELECT statement that defines the derived table may be written to accept arguments in the form of local variables. If the SELECT statement is embedded in a stored procedure, the arguments may be written as parameters for the procedure.
+    - Derived table expressions that are nested within an outer query can contain other derived table expressions. Nesting is permitted, but it is not recommended due to increased complexity and reduced readability.
+
+## Common Table Expressions
+Another form of table expression provided by SQL Server is the CTE. Similar in some ways to derived tables, CTEs provide a mechanism for defining a subquery that may then be used elsewhere in a query. Unlike a derived table, a CTE is defined at the beginning of a query and may be referenced multiple times in the outer query.
+- CTEs are named expressions defined in a query. Like subqueries and derived tables, CTEs provide a means to break down query problems into smaller, more modular units. 
+- When writing queries with CTEs, consider the following guidelines: 
+    - Like derived tables, CTEs are limited in scope to the execution of the outer query. When the outer query ends, so does the CTE's lifetime. 
+    - CTEs require a name for the table expression, in addition to unique names for each of the columns referenced in the CTE's SELECT clause.
+    - CTEs may use inline or external aliases for columns. 
+    -  Unlike a derived table, a CTE may be referenced multiple times in the same query with one definition. Multiple CTEs may also be defined in the same WITH clause. 
+    - CTEs support recursion, in which the expression is defined with a reference to itself.

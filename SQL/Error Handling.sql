@@ -13,6 +13,9 @@ on soh.CustomerID = cust.CustomerID
 select * from SalesLT.vOrderDescription
 order by Quantity, UnitPrice desc
 
+select * from [SalesLT].[vProductModelCatalogDescription]
+
 select * from [sys].[messages]
 where language_id = 1033 and severity > 19
 order by message_id desc
+
