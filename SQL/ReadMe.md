@@ -414,3 +414,11 @@ CROSS APPLY dbo.fn_TopProductsByShipper(S.supplierid) AS P;
 ```
 - Note that because CROSS APPLY is used here, suppliers with no products are 
 excluded from the result. 
+
+## [CURSORS](https://www.youtube.com/watch?v=INw_KGjyfDw)
+Relational Database Management Systems, including sql server are very good at handling data in SETS. For example, the following "UPDATE" query, updates a set of rows that matches the condition in the "WHERE" clause at the same time. 
+- `Update tblProductSales Set UnitPrice = 50 where ProductId = 101`
+
+- However, if there is ever a need to process the rows, on a row-by-row basis, then cursors are your choice. Cursors are very bad for performance, and should be avoided always. Most of the time, cursors can be very easily replaced using joins.
+
+-  A cursor is a database object that allows you to retrieve and manipulate rows from a result set one at a time. Cursors are useful when you need to perform operations on each row of a result set rather than on the set as a whole.
