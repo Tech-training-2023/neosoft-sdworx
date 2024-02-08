@@ -31,7 +31,7 @@ Declare ProductCursor Cursor For
 Select ProductModelID From SalesLT.Product
 Open ProductCursor
 
-Fetch Next From ProductModelCursor into @ProductModelId
+Fetch Next From ProductCursor into @ProductModelId
 
 While(@@FETCH_STATUS = 0)
 Begin 
@@ -51,6 +51,69 @@ Begin
 End
  Fetch Next From ProductCursor into @ProductModelId
 End
-
 Close ProductCursor
 Deallocate ProductCursor
+
+DELETE From Gloves --where ProductModelId = 3
+select * from [dbo].[Gloves]
+
+use RestaurantDb
+Delete from Restaurants where Id = 2
+insert into Restaurants Values ('LAntica','London', 'GW16JY', 'London');
+
+Truncate table Reviews
+
+Select * from Reviews
+
+drop table Reviews
+
+USE [RestaurantDb]
+GO
+
+/****** Object:  Table [dbo].[Restaurants]    Script Date: 2/8/2024 10:19:23 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Restaurants](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NOT NULL,
+	[city] [varchar](50) NOT NULL,
+	[postcode] [varchar](7) NOT NULL,
+	[state] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [RestaurantDb]
+GO
+
+/****** Object:  Table [dbo].[Reviews]    Script Date: 2/8/2024 10:20:42 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Reviews](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[rating] [int] NOT NULL,
+	[decription] [varchar](250) NULL,
+	[restaurantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Reviews]  WITH CHECK ADD FOREIGN KEY([restaurantId])
+REFERENCES [dbo].[Restaurants] ([id])
+ON DELETE CASCADE
+GO
+

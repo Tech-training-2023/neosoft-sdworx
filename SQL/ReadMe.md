@@ -422,3 +422,18 @@ Relational Database Management Systems, including sql server are very good at ha
 - However, if there is ever a need to process the rows, on a row-by-row basis, then cursors are your choice. Cursors are very bad for performance, and should be avoided always. Most of the time, cursors can be very easily replaced using joins.
 
 -  A cursor is a database object that allows you to retrieve and manipulate rows from a result set one at a time. Cursors are useful when you need to perform operations on each row of a result set rather than on the set as a whole.
+
+### DELETE, TRUNCATE AND DROP
+- DELETE - Its a DML command.
+    -  It is used to delete one or more records of the table. 
+    - With the help of DELETE command we can either delete all rows or in one go or one by one based on the filter (WHERE clause). 
+    - It's comparitively slower tahn TRUNCATE command because it keeps the indexes.
+    - With delete we can use ROLLBACK command to restore the record because it does not auto-commit. 
+- TRUNCATE - It is a DDL command. 
+    - It is used top delete all the rows of a table in one go. 
+    - With TRUNCATE command we cannot delete single row or used a where clause. 
+    - It deletes rows fastly and also removes indexes if any. 
+    - We can't restore the record of the table using ROLLBACK Command.
+- DROP - It is also a DDL Command
+    - It is used to dorop the whole table as in its structure in one go including the physical file.
+    - One cannot restore the table by using the ROLLBACK command because it auto-commits as well. 
